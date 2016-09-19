@@ -20,6 +20,18 @@ class StreamFile extends Wowza{
 		$this->_applicationName = $appName;
 	}	
 	
+	public function get(){ 
+		$this->_skip["name"] = true;
+		$this->restURI .= "/".$this->name;
+	
+		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_GET);
+	}	
+	
+	public function getAll(){ 
+		$this->_skip["name"] = true;
+		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_GET);
+	}
+	
 	public function create($urlProps, $mediaCasterType="rtp", $applicationInstance = "_definst_"){
 		$sf = new entities\application\StreamFiles();
 		$sf->id = "connectAppName=".$this->_applicationName."&appInstance={$applicationInstance}&mediaCasterType={$mediaCasterType}";

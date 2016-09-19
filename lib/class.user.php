@@ -1,54 +1,39 @@
 <?php
 namespace com\wowza;
-class Publisher extends Wowza{
+class User extends Wowza{
 	private $restURI = ""; 
-	private $name = "";
+	private $userName = "";
 	private $password = "";
+	private $groups = array();
 	 
 	private $_skip = array();
 	private $_additional = array();
 	
  
-	public function __construct($publisherName=null){   
-		$this->name = $publisherName;
-		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/publishers"; 
+	public function __construct($userName=null){   
+		$this->userName = $userName;
+		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/users"; 
 	}	
 	
-	public function create($password){   
+	public function create($password, $group=array()){   
 		$this->restURI = $this->restURI; 
 		$this->password = $password;
+		$this->groups = $group;
 		$response = $this->sendRequest($this->preparePropertiesForRequest($this),array()); 
 		return $response;
 	} 
 	
 	public function getAll(){ 
-		$this->_skip["name"] = true;
+		$this->_skip["userName"] = true;
 		$this->_skip["password"] = true; 
+		$this->_skip["group"] = true; 
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_GET);
 	}
 	
 	public function remove(){ 
-		$this->restURI = $this->restURI."/".$this->name;
+		$this->restURI = $this->restURI."/".$this->userName;
 		return $this->sendRequest($this->preparePropertiesForRequest($this),array(), self::VERB_DELETE);
-	}
- 
-	protected function getAdvancedSettings($urlProps){
-		if(is_array($urlProps)){
-			$items = array();
-			foreach($urlProps as $k=>$v){
-				$item = new entities\application\helpers\AdvancedSettingItem();
-				$item->name = $k;
-				$item->value = $v;
-				$items[] = $item;
-			}
-			return $items;
-		}
-		else{
-			$item = new entities\application\helpers\AdvancedSettingItem();
-			$item->value = $urlProps;
-			return $item;
-		}
-	}
+	} 
 	
 	protected function preparePropertiesForRequest(){
 		$classPropNames = get_class_vars(get_class($this));

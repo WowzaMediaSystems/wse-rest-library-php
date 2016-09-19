@@ -7,8 +7,9 @@ class Application extends Wowza{
 	private $clientStreamReadAccess = "*";
 	private $clientStreamWriteAccess = "*";
 	private $description = ""; 
+	private $_skip = array();
 	
-	public function __construct($name,
+	public function __construct($name="live",
 			$appType = "Live",
 			$clientStreamReadAccess = "*",
 			$clientStreamWriteAccess = "*",
@@ -21,6 +22,25 @@ class Application extends Wowza{
 		$this->description = $description;
 		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/vhosts/".$this->getVHostInstance()."/applications/{$name}"; 
 	}	
+	
+	public function get(){ 
+		$this->_skip["name"] = true;
+		$this->_skip["clientStreamReadAccess"] = true; 
+		$this->_skip["appType"] = true; 
+		$this->_skip["clientStreamWriteAccess"] = true; 
+		$this->_skip["description"] = true; 
+		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_GET);
+	}
+	
+	public function getAll(){ 
+		$this->_skip["name"] = true;
+		$this->_skip["clientStreamReadAccess"] = true; 
+		$this->_skip["appType"] = true; 
+		$this->_skip["clientStreamWriteAccess"] = true; 
+		$this->_skip["description"] = true; 
+		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/vhosts/".$this->getVHostInstance()."/applications"; 
+		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_GET);
+	}
 	
 	public function create(entities\application\StreamConfig $streamConfig, 
 							entities\application\SecurityConfig $securityConfig = null,
@@ -62,6 +82,9 @@ class Application extends Wowza{
 		foreach($classPropNames as $key=>$val){
 			if(isset($this->$key)){
 				if(preg_match("/^(\_)/", $key)){
+					continue;
+				}
+				if(isset($this->_skip[$key])){
 					continue;
 				}
 				$props->$key = $this->$key;

@@ -1,8 +1,10 @@
 <?php
 require_once("../include/config.php"); 
  
-$sf = new com\wowza\Publisher("fox1");
-$response = $sf->create("matt2","matt2"); 
+$sf = new com\wowza\Publisher("myUser");
+// $response = $sf->create("myPass"); 
 // $response = $sf->remove();
+$response = $sf->getAll();
+
 
 var_dump($response);

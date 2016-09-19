@@ -35,7 +35,10 @@ $modules = new com\wowza\entities\application\Modules();
 $modules->moduleList[] = $modules->getModuleItem("ModuleCoreSecurity", "ModuleCoreSecurity", "com.wowza.wms.security.ModuleCoreSecurity");
 
 // Create this application
-$wowzaApplication = new com\wowza\Application("YourAppName4");
+$wowzaApplication = new com\wowza\Application("live");
+// var_dump($wowzaApplication->getAll());
+// var_dump($wowzaApplication->get());
+
 // $response = $wowzaApplication->create($streamConfig);
 // $response = $wowzaApplication->create($streamConfig, $securityConfig,$modules);
 
@@ -45,4 +48,4 @@ $wowzaApplication = new com\wowza\Application("YourAppName4");
 // Remove the application
 // $response = $wowzaApplication->remove();
 
-var_dump($response);
+// var_dump($response);
