@@ -15,8 +15,7 @@ class User extends Wowza{
 		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/users"; 
 	}	
 	
-	public function create($password, $group=array()){   
-		$this->restURI = $this->restURI; 
+	public function create($password, $group=array()){    
 		$this->password = $password;
 		$this->groups = $group;
 		$response = $this->sendRequest($this->preparePropertiesForRequest($this),array()); 
