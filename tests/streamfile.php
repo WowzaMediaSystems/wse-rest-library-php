@@ -1,8 +1,7 @@
 <?php
 require_once("../include/config.php"); 
-
-$wowzaApplication = new com\wowza\Application("live");
-$sf = new com\wowza\StreamFile($wowzaApplication->getName(), "matt123");
+ 
+$sf = new com\wowza\StreamFile("live", "matt123");
 $response = $sf->get();
 
 // $response = $sf->create(array("uri"=>"rtsp://localhost/vod/mp4:BigBuckBunny_115k.mov","streamTimeout"=>1200,"rtspSessionTimeout"=>800), "rtp");

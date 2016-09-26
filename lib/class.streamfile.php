@@ -12,12 +12,16 @@ class StreamFile extends Wowza{
 	private $_additional = array();
 	
 	
-	public function __construct($appName, $streamFileName, 
+	public function __construct($appName=null, $streamFileName=null, 
 			$serverInstance = "_defaultServer_",
 			$vhostInstance = "_defaultVHost_"){
-		$this->name = $streamFileName;  
 		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/vhosts/".$this->getVHostInstance()."/streamfiles";
-		$this->_applicationName = $appName;
+		
+		if(!is_null($appName))
+			$this->_applicationName = $appName;
+		
+		if(!is_null($streamFileName))
+			$this->name = $streamFileName;  
 	}	
 	
 	public function get(){ 
