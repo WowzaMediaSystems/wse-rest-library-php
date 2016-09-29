@@ -5,7 +5,16 @@ A php library that wraps the Wowza REST API.
 Wowza Streaming Engine 4.0.0 or later is required.
 
 ## Usage
-Several examples of usage within the tests folder. 
+Several examples of usage within the tests folder. To setup the library to point to your server, you can modify the include/constants.php file and modify the following lines:
+
+```PHP
+define("BASE_DIR", dirname(dirname(__FILE__)));
+define("WOWZA_HOST","http://localhost:8087/v2");
+define("WOWZA_SERVER_INSTANCE", "_defaultServer_");
+define("WOWZA_VHOST_INSTANCE", "_defaultVHost_");
+define("WOWZA_USERNAME", "admin");
+define("WOWZA_PASSWORD", "admin");
+```
 
 ## More resources
 [Wowza Streaming Engine Server-Side API Reference](https://www.wowza.com/resources/WowzaStreamingEngine_ServerSideAPI.pdf)
