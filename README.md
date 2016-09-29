@@ -1,4 +1,4 @@
-# rest-library-php
+# PHP REST Library
 A php library that wraps the Wowza REST API.
 
 ## Prerequisites
