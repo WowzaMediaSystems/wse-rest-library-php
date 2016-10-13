@@ -1,7 +1,8 @@
 <?php
 function __autoload($className) 
 {
-	$className = array_pop(explode("\\",$className));
+	$arr= explode("\\",$className);
+	$className = array_pop($arr);
 	
 	$dirs = array("lib","lib/entities/application","lib/entities","lib/entities/application/helpers");
 			
