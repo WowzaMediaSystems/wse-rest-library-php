@@ -1,12 +1,11 @@
-# PHP REST Library
-A php library that wraps the Wowza REST API.
+# PHP REST Library for Wowza Streaming Engine
+Wowza Streaming Engine™ media server software includes a REST API that you can wrap with a PHP library to configure, manage, and monitor your streaming media server through PHP requests.
 
 ## Prerequisites
 Wowza Streaming Engine 4.0.0 or later is required.
 
 ## Usage
-Several examples of usage within the tests folder. To setup the library to point to your server, you can modify the include/constants.php file and modify the following lines:
-
+To set up the PHP library to point to your streaming media server, modify the following lines in **include/constants.php**:
 ```PHP
 define("BASE_DIR", dirname(dirname(__FILE__)));
 define("WOWZA_HOST","http://localhost:8087/v2");
@@ -15,15 +14,12 @@ define("WOWZA_VHOST_INSTANCE", "_defaultVHost_");
 define("WOWZA_USERNAME", "admin");
 define("WOWZA_PASSWORD", "admin");
 ```
+See several examples of usage in the **tests** folder and in our [REST API Query Examples (PHP) articles](https://www.wowza.com/forums/content.php?889-wowza-streaming-engine-rest-api-query-examples-%28php%29) on www.wowza.com.
 
 ## More resources
-[Wowza Streaming Engine Server-Side API Reference](https://www.wowza.com/resources/WowzaStreamingEngine_ServerSideAPI.pdf)
-
-[How to extend Wowza Streaming Engine using the Wowza IDE](https://www.wowza.com/forums/content.php?759-How-to-extend-Wowza-Streaming-Engine-using-the-Wowza-IDE)
-
 Wowza Media Systems™ provides developers with a platform to create streaming applications and solutions. See [Wowza Developer Tools](https://www.wowza.com/resources/developers) to learn more about our APIs and SDK.
 
-For examples on how to leverage this library, check out [How to use PHP to make requests to the Wowza REST API](https://www.wowza.com/forums/content.php?872-How-to-use-PHP-to-make-requests-to-the-Wowza-REST-API).
+To learn the basics of how to query the Wowza Streaming Engine REST service using PHP, see [How to use PHP to make requests to the Wowza Streaming Engine REST API](https://www.wowza.com/forums/content.php?918-How-to-use-PHP-to-make-requests-to-the-Wowza-Streaming-Engine-REST-API). For examples on how to leverage this PHP library, see [REST API Query Examples (PHP)](https://www.wowza.com/forums/content.php?889-wowza-streaming-engine-rest-api-query-examples-(php)).
 
 ## Contact
 [Wowza Media Systems, LLC](https://www.wowza.com/contact)

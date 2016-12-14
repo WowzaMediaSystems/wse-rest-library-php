@@ -1,0 +1,234 @@
+Wowza Public License
+Version 1.0 (February 1, 2016)
+
+Please note: this License ("License") contains unique terms that differ from many common "open source" and similar license terms 
+published by the Free Software Foundation and the Mozilla Organization.THE ACCOMPANYING CODE IS PROVIDED UNDER THE TERMS OF THIS 
+WOWZA PUBLIC LICENSE AGREEMENT. ANY ACCESS TO OR USE, REPRODUCTION, MODIFICATION, DISTRIBUTION OR OTHER EXPLOITATION OF THE 
+ACCOMPANYING CODE CONSTITUTES YOUR ACCEPTANCE OF THIS LICENSE AGREEMENT. NOTHING OTHER THAN THIS LICENSE GRANTS YOU PERMISSION TO 
+ACCESS, USE REPRODUCE, MODIFY, DISTRIBUTE OR OTHERWISE EXPLOIT THE SOURCE CODE OR ITS DERIVATIVE WORKS. IF YOU DO NOT ACCEPT ALL 
+OF THESE TERMS AND CONDITIONS, DO NOT ACCESS, USE, REPRODUCE, MODIFY, DISTRIBUTE OR OTHERWISE EXPLOIT THE ACCOMPANYING CODE.
+
+1. Wowza License Grant to You.
+
+   a. Wowza grants You a revocable (only by Wowza and only as provided herein) worldwide, royalty-free, non-exclusive license:
+
+      i. under intellectual property rights (other than patent or trademark) Licensable by Wowza, to reproduce, modify, run, and 
+distribute the Covered Code; and
+
+      ii. under Patent Claims infringed by the making, using, or importing the Original Code, to make, have made, use, import, 
+and practice the Original Code (or portions thereof).
+
+   b. For the avoidance of doubt and subject to Section 1.a.ii, above, Wowza grants You no license under Patent Claims infringed 
+by the making, using, practicing, or importing of Modifications.
+
+   c. This License applies to code to which Wowza has attached the notice in Exhibit A, and to related Covered Code.
+
+   d. Notwithstanding Section 1.a.ii above, no patent license is granted: 1) for code that You delete from the Original Code; 
+2) for Code that you separate from the Original Code; or 3) for any Modification of the Original Code.
+
+   e. For the avoidance of doubt, the rights granted in this Section 1 grant you permission to make, run, market, and receive 
+compensation for Covered Code, whether standing alone, or as a part of a software or service offering by You, provided you comply 
+with this License and maintain this License's full effect.
+
+2. Contributor Grants.
+
+   a. To the extent You are a Contributor, You hereby grant all Recipients a world-wide, royalty-free, non-exclusive license:
+
+      i. under intellectual property rights (other than patent or trademark) Licensable by Contributor, to reproduce, modify, 
+run, and distribute the Contributor Version; and
+
+      ii. under Patent Claims infringed by the making, using, or importing of the Contributor Version, to make, have made, use, 
+and import: 1) Modifications made by that Contributor (or portions thereof); and 2) the combination of Modifications made by that 
+Contributor with its Contributor Version (or portions of such combination).
+
+3. Title; Reservation of Rights. As between You and Wowza, Wowza retains all title, ownership rights, and intellectual property 
+rights in the Original Code. Wowza and the other Contributors, if applicable, reserve all rights not expressly granted to You 
+hereunder, and no other licenses are granted or implied. Wowza may license the Original Code, including Modifications 
+incorporated therein, on different terms from those contained in this License.
+
+4. Distribution Obligations.
+
+   a. You will ensure that any Modifications that You create or to which You contribute are governed by the terms of this 
+License. If You Convey such Modifications or resulting Covered Code (except as required in Section 5), You will do so solely 
+under the terms of this License.
+
+   b. If You Convey the Source Code version of Covered Code you will do so solely under the terms of this License or any future 
+version of this License (as described below), and You must include a copy of this License with each and every copy of such Source 
+Code you Convey.
+
+   c. You will not offer or impose any terms on any Source Code version that alters or restricts the applicable version of this 
+License or the recipients' rights hereunder. For the avoidance of doubt, the obligation to provide licenses to Wowza (as provided 
+in Section 5, above) follows the Original Code and the Covered Code, and applies to each Contributor and recipient of Covered 
+Code.
+
+5. Obligations to Provide Code to Wowza; Additional License Grants to Wowza.
+
+   a. You will provide Wowza with a complete copy of any Covered Code and related documentation for Modifications created or 
+contributed by You, and will do so promptly following either a request by Wowza or the first time You Convey such Modifications.
+
+   b. If You are a Contributor and do not Convey the Modifications in Source Code form, You hereby grant Wowza an unrestricted, 
+nonexclusive, worldwide, perpetual, irrevocable, royalty-free right, to use, reproduce, modify, display, perform, sublicense and 
+distribute and otherwise exploit all Covered Code and and related documentation for Modifications, and to grant third parties the 
+right to do so, including without limitation as a part of or with the Covered Code under all intellectual property rights 
+(including any patent rights); and Wowza has the right to license or to otherwise transfer to third parties its rights to such 
+Modifications without notice or any obligation to You, including without limitation the obligation to account for any profits 
+obtained by Wowza.
+
+6. Notices; Descriptions of Modifications Required.
+
+   a. You must cause all Covered Code to which You contribute to contain a file documenting the changes You made to create that 
+Covered Code and the date of any change. You must include a prominent statement that the Modification is derived, directly or 
+indirectly, from Original Code provided by Wowza Media Systems, LLC, and including the name of Wowza in: (a) the Source Code; and 
+(b) in any notice in an Executable version or related documentation in which You describe the origin or ownership of the Covered 
+Code.
+
+   b. You must duplicate the notice provided in Exhibit A in each file of the Source Code. If it is not possible to put such 
+notice in a particular Source Code file due to its structure, then You must include such notice in a location where a user would 
+be likely to look for such a notice. If You created one or more Modification(s) You may add your name as a Contributor to the 
+notice described in Exhibit A. You must also duplicate this License in any documentation for the Source Code where You describe 
+recipients' rights or ownership rights relating to Covered Code.
+
+   c. If it is impossible for You to comply with any of the terms of this License with respect to some or all of the Covered Code 
+due to applicable statute, judicial order, or regulation, then this License does not terminate but: (a) You do not have any 
+rights from Wowza pursuant to Section 1.a; (b) You do not have any rights from other Contributors pursuant to Section 2.a; and 
+(c) You must not access, run, use, have made, reproduce, modify, distribute, or exploit the Covered Code.
+
+7. License Versions.
+
+   a. Wowza may publish a revised or new version of the License from time to time in its sole discretion without prior notice. 
+Each version will be given a distinguishing version number.
+
+   b. Subject to Wowza's right to terminate or revoke this License, once Covered Code has been published under a particular 
+version of the License, You may always continue to use it under the terms of that version.
+
+   c. No one other than Wowza or its successors or assigns has the right to modify the terms applicable to Covered Code created 
+under this License.
+
+8. Disclaimer of Warranty; Limitation of Liability.
+
+   a. THE COVERED CODE IS PROVIDED UNDER THIS LICENSE ON AN "AS IS" BASIS, WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR 
+IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, 
+LACK OF VIRUSES, ACCURACY OR COMPLETENESS OF RESPONSES, WARRANTIES IMPLIED FROM A COURSE OF DEALING OR COURSE OF PERFORMANCE, OR 
+WARRANTIES THAT THE OPERATION OF THE COVERED CODE WILL BE UNINTERRUPTED, ERROR FREE, OR PRODUCE PARTICULAR RESULTS. THE ENTIRE 
+RISK AS TO THE QUALITY AND PERFORMANCE OF THE COVERED CODE IS WITH YOU. SHOULD ANY COVERED CODE PROVE DEFECTIVE IN ANY RESPECT, 
+YOU (NOT WOWZA OR ANY OTHER CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY SERVICING, REPAIR OR CORRECTION. THIS DISCLAIMER OF 
+WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE. NO USE OF ANY COVERED CODE IS AUTHORIZED HEREUNDER EXCEPT UNDER THIS 
+DISCLAIMER.
+
+   b. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL WOWZA, ANY OTHER CONTRIBUTOR, OR ANY PERSON WHO COVEYS 
+COVERED CODE, OR ANY SUPPLIER OF ANY OF SUCH PARTIES, BE LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES 
+ARISING OUT OF THE USE OR INABILITY TO USE THE COVERED CODE, INCLUDING BUT NOT LIMITED TO LOST PROFITS OR BUSINESS OPPORTUNITIES, 
+LOSS OF USE, BUSINESS INTERRUPTION, OR LOSS OF DATA, UNDER ANY THEORY OF LIABILITY, WHETHER BASED IN CONTRACT, TORT, NEGLIGENCE, 
+PRODUCT LIABILITY, OR OTHERWISE EVEN IF SUCH PARTY HAS BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+   c. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, WOWZA'S TOTAL AGGREGATE LIABILITY TO ALL LICENSEES AND CONTRIBUTORS 
+HEREUNDER WILL NOT EXCEED THE GREATER OF (a) LICENSE FEES RECEIVED BY WOWZA FOR COVERED CODE; OR (b) FIVE HUNDRED U.S. DOLLARS 
+(US $500.00).
+
+   d. YOU UNDERSTAND AND AGREE THAT THE FOREGOING DISCLAIMER OF WARRANTIES AND LIMITATIONS OF LIABILITY CONSTITUTES AN ESSENTIAL 
+PART OF THIS AGREEMENT AND THAT WOWZA, ANY OTHER CONTRIBUTOR, OR ANY PERSON WHO COVEYS COVERED CODE WOULD NOT COVEY THE COVERED 
+CODE ABSENT THESE PROTECTIONS.
+
+9. Termination.
+
+   a. This License and the rights granted to You hereunder will terminate automatically if You fail to comply with the terms 
+herein. Notwithstanding the foregoing, if you promptly cease and cure all violations of this License and notify Wowza that you 
+have done so, then this License and the rights granted to You hereunder are reinstated. Sections 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 
+and 12 survive termination of this License.
+
+   b. If You initiate litigation and assert a patent or other intellectual property infringement claim against Wowza or another 
+Recipient or Contributor related to the Covered Code or any Executable, this License and the rights granted to You hereunder will 
+terminate automatically.
+
+10. Your Responsibility for Claims. Notwithstanding any limitations of liability, to the maximum extent permitted by law, You 
+agree to indemnify, defend, and hold harmless Wowza, and pay the amount of any final judgment or settlement to which we consent, 
+against any claim or demand alleging that: (a) your Modification(s) or Covered Code resulting from Your Modification(s), or 
+Wowza's accessing, use, reproduction, modification, distribution, or other exploitation of the same, infringes the intellectual 
+property rights of any third party; or (2) a third party has been harmed or injured by Your actions or omissions related to, or 
+breach of, this License.
+
+11. Miscellaneous. This License represents the complete agreement concerning the subject matter hereof. If any provision of this 
+License is held to be unenforceable, such provision will be reformed only to the extent necessary to make it enforceable. This 
+License will be governed by New York law provisions (except to the extent applicable law, if any, provides otherwise), excluding 
+its conflict-of-law provisions. With respect to disputes in which at least one party is a citizen of, or an entity chartered or 
+registered to do business in the United States of America, any litigation relating to this License will be subject to the 
+jurisdiction of the Federal Courts of Colorado, with venue lying in Denver County, Colorado. The application of the United 
+Nations Convention on Contracts for the International Sale of Goods is expressly excluded. Any law or regulation which provides 
+that the language of a contract will be construed against the drafter will not apply to this License. You agree that, if you 
+export or re-export the Covered Code or any modifications to it, You are responsible for compliance with the United States Export 
+Administration Regulations and hereby agree to comply with the same, and to indemnify Wowza and all other Contributors for any 
+liability incurred as a result.
+
+12. Definitions.
+
+   a. "Contributor" means each entity that creates or contributes to the creation of Modifications.
+
+   b. "Convey" means, with respect to a work, to copy, distribute (with or without modification), make available to the public, 
+or otherwise exploit it (other than executing it on a computer that, without permission, would make you directly or indirectly 
+liable for infringement under applicable copyright law.
+
+   c. "Contributor Version" means the combination of the Original Code, prior Modifications used by a Contributor, and the 
+Modifications made by that particular Contributor.
+
+   d. "Covered Code" means the Original Code or Modifications or the combination of the Original Code and Modifications, in each 
+case including portions thereof.
+
+   e. "Executable" means Covered Code in any form other than Source Code.
+
+   f. "License" means this document.
+
+   g. "Licensable" means having the right to grant, to the maximum extent possible, whether at the time of the initial grant or 
+subsequently acquired, any and all of the rights conveyed herein.
+
+   h. "Modifications" means any addition to or deletion from the substance or structure of either the Original Code or any 
+previous Modifications. When Covered Code is released as a series of files, a Modification is: (1) any addition to or deletion 
+from the contents of a file containing Original Code or previous Modifications; and (2) any new file that contains any part of 
+the Original Code or previous Modifications.
+
+   i. "Original Code" means Source Code of computer software code which is described in the Source Code notice required by 
+Exhibit A as Original Code.
+
+   j. "Patent Claims" means any patent claim(s), now owned or hereafter acquired, including without limitation, method, process, 
+and apparatus claims, in any patent Licensable by grantor.
+
+   k. "Recipient" means any individual or entity who directly or indirectly receives the Covered Code under this Agreement, 
+including all Contributors.
+
+   l. "Source Code" means the preferred form of the Covered Code for making modifications to it, including all modules it 
+contains, plus any associated interface definition files, scripts used to control compilation and installation of an Executable, 
+or source code differential comparisons against the Original Code. The Source Code can be in a compressed or archival form, 
+provided the appropriate decompression or de-archiving software is widely available for no charge.
+
+   m. "Wowza" means Wowza Media Systems, LLC, 523 Park Point Drive, Suite 300, Golden, Colorado USA, ATTN: Legal Department.
+
+   n. "You" (or "Your") means an individual or a legal entity exercising rights under, and complying with all of the terms of, 
+this License or a future version of this License. For legal entities, "You" includes any entity which controls, is controlled by, 
+or is under common control with You.
+
+Exhibit A
+License Notice
+
+Copyright (c) 2007 - 2016, Wowza Media Systems, LLC. All rights reserved.
+
+The accompanying code is exclusively provided under the terms of the Wowza Public License, which is available at 
+www.wowza.com/legal.
+
+No Wowza trademark or name may be used to imply endorsement by Wowza of products or services which make use of or are derived 
+from this software without the prior written permission of Wowza Media Systems. THE ACCOMPANYING CODE IS PROVIDED BY 
+WOWZA MEDIA SYSTEMS, LLC AND CONTRIBUTORS ON AN "AS IS" BASIS, WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, 
+INCLUDING, WITHOUT LIMITATION, WARRANTIES OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, LACK OF 
+VIRUSES, ACCURACY OR COMPLETENESS OF RESPONSES, WARRANTIES IMPLIED FROM A COURSE OF DEALING, OR COURSE OF PERFORMANCE, OR 
+WARRANTIES THAT THE OPERATION OF THE ACCOMPANYING CODE WILL BE UNINTERRUPTED, ERROR FREE, OR PRODUCE PARTICULAR RESULTS. THE 
+ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE ACCOMPANYING CODE IS WITH YOU. SHOULD ANY OF THE ACCOMPANYING CODE PROVE 
+DEFECTIVE IN ANY RESPECT, YOU (NOT WOWZA OR ANY OTHER CONTRIBUTOR) ASSUME THE COST OF ANY NECESSARY SERVICING, REPAIR OR 
+CORRECTION. THIS DISCLAIMER OF WARRANTY CONSTITUTES AN ESSENTIAL PART OF THIS LICENSE. NO USE OF ANY OF THE ACCOMPANYING CODE IS 
+AUTHORIZED HEREUNDER EXCEPT UNDER THIS DISCLAIMER.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL WOWZA MEDIA SYSTEMS, LLC OR ANY CONTRIBUTOR BE LIABLE FOR ANY 
+INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE ACCOMPANYING CODE, 
+INCLUDING BUT NOT LIMITED TO LOST PROFITS OR BUSINESS OPPORTUNITIES, LOSS OF USE, BUSINESS INTERRUPTION, OR LOSS OF DATA, UNDER 
+ANY THEORY OF LIABILITY, WHETHER BASED IN CONTRACT, TORT, NEGLIGENCE, PRODUCT LIABILITY, OR OTHERWISE EVEN IF WOWZA OR A 
+CONTRIBUTOR HAS BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, WOWZA MEDIA SYSTEM, LLC'S TOTAL AGGREGATE LIABILITY TO ANY LICENSEES AND 
+CONTRIBUTORS HEREUNDER WILL NOT EXCEED TWENTY-FIVE U.S. DOLLARS (US $25.00).
