@@ -14,12 +14,12 @@ define("WOWZA_VHOST_INSTANCE", "_defaultVHost_");
 define("WOWZA_USERNAME", "admin");
 define("WOWZA_PASSWORD", "admin");
 ```
-See several examples of usage in the **tests** folder and in our [REST API Query Examples (PHP) articles](https://www.wowza.com/forums/content.php?889-wowza-streaming-engine-rest-api-query-examples-%28php%29) on www.wowza.com.
+See several examples of usage in the **tests** folder.
+
+To learn the basics of how to query the Wowza Streaming Engine REST service using PHP, see [How to use PHP to make requests to the Wowza Streaming Engine REST API](https://www.wowza.com/forums/content.php?918-How-to-use-PHP-to-make-requests-to-the-Wowza-Streaming-Engine-REST-API). For examples on how to leverage this PHP library, see [REST API Query Examples (PHP)](https://www.wowza.com/forums/content.php?889-wowza-streaming-engine-rest-api-query-examples-%28php%29).
 
 ## More resources
 Wowza Media Systems™ provides developers with a platform to create streaming applications and solutions. See [Wowza Developer Tools](https://www.wowza.com/resources/developers) to learn more about our APIs and SDK.
-
-To learn the basics of how to query the Wowza Streaming Engine REST service using PHP, see [How to use PHP to make requests to the Wowza Streaming Engine REST API](https://www.wowza.com/forums/content.php?918-How-to-use-PHP-to-make-requests-to-the-Wowza-Streaming-Engine-REST-API). For examples on how to leverage this PHP library, see [REST API Query Examples (PHP)](https://www.wowza.com/forums/content.php?889-wowza-streaming-engine-rest-api-query-examples-(php)).
 
 ## Contact
 [Wowza Media Systems, LLC](https://www.wowza.com/contact)
