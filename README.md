@@ -1,8 +1,8 @@
 # PHP REST Library for Wowza Streaming Engine
-Wowza Streaming Engine™ media server software includes a REST API that you can wrap with a PHP library to configure, manage, and monitor your streaming media server through PHP requests.
+Wowza Streaming Engine [media server software](https://www.wowza.com/products/streaming-engine) includes a REST API that you can wrap with a PHP library to configure, manage, and monitor your streaming media server through PHP requests.
 
 ## Prerequisites
-Wowza Streaming Engine 4.0.0 or later is required.
+Wowza Streaming Engine™ 4.0.0 or later is required.
 
 ## Usage
 To set up the PHP library to point to your streaming media server, modify the following lines in **include/constants.php**:
