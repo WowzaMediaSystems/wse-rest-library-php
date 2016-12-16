@@ -1,7 +1,11 @@
+//
+// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
+//
 <?php
 use com\wowza\DvrClipExtraction;
-require_once("../include/config.php"); 
- 
+require_once("../include/config.php");
+
 $sf = new com\wowza\DvrClipExtraction("ndvr");
 $response = $sf->clearCache();
 // $response = $sf->debugConversions("tmp127");
@@ -17,7 +21,7 @@ $response = $sf->clearCache();
 
 // $response = $sf->getAll();
 
- 
+
 
 
 var_dump($response);

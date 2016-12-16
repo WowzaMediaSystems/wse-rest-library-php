@@ -1,27 +1,31 @@
-<?php 
+//
+// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
+//
+<?php
 namespace com\wowza;
 class DvrClipExtraction extends Wowza{
-	private $restURI = "";    
-	
+	private $restURI = "";
+
 	private $_skip = array();
 	private $_additional = array();
 
 
-	public function __construct($appName, $appInstance="_definst_"){ 
+	public function __construct($appName, $appInstance="_definst_"){
 		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/vhosts/".$this->getVHostInstance()."/applications/{$appName}/instances/{$appInstance}/dvrstores";
 	}
 
-	public function create(){  
-		 
+	public function create(){
+
 		$response = $this->sendRequest($this->preparePropertiesForRequest($this),array());
 		return $response;
 	}
 
-	public function getItem($name){    
+	public function getItem($name){
 		$this->restURI = $this->restURI."/".$name;
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_GET);
-	} 
-	
+	}
+
 	public function convertGroup($nameArr){
 		$this->setNoParams();
 		$this->restURI = $this->restURI."/actions/convert?dvrConverterStoreList=".implode(",", $nameArr);
@@ -32,7 +36,7 @@ class DvrClipExtraction extends Wowza{
 	 * dvrConverterStartTime=[unix timestamp]
      * dvrConverterEndTime=[unix-timestamp]
      * dvrConverterOutputFilename=[outputfilename]
-	 * 
+	 *
 	 * @param $startTime is a unix timestamp
 	 * @param $endTime is a unix timestamp
 	 * @param $outputFileName is a string
@@ -52,16 +56,16 @@ class DvrClipExtraction extends Wowza{
 			$query.="dvrConverterOutputFilename=".$outputFileName;
 		}
 		$query = (strlen($query)==0)?"":"?".$query;
-	
+
 		$this->restURI = $this->restURI."/{$name}/actions/convert{$query}";
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_PUT);
 	}
-	
+
 	public function clearCache(){
 		$this->restURI = $this->restURI."/actions/expire";
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_PUT);
 	}
-	
+
 	public function debugConversions($name){
 		$this->restURI = $this->restURI."/{$name}/actions/convert?dvrConverterDebugConversions=true";
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_PUT);
@@ -86,7 +90,7 @@ class DvrClipExtraction extends Wowza{
 		}
 		$query = (strlen($query)==1)?"":"?".$query;
 		$this->restURI = $this->restURI."/{$name}/actions/convert{$query}";
-	
+
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_PUT);
 	}
 
@@ -106,19 +110,19 @@ class DvrClipExtraction extends Wowza{
 		}
 		$query = (strlen($query)==1)?"":"?".$query;
 		$this->restURI = $this->restURI."/{$name}/actions/convert{$query}";
-	
+
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_PUT);
 	}
 
-	public function getAll(){  
+	public function getAll(){
 		$this->setNoParams();
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_GET);
-	} 
-	
-	private function setNoParams(){ 
 	}
 
-	public function remove($fileName){  
+	private function setNoParams(){
+	}
+
+	public function remove($fileName){
 		$this->setNoParams();
 		$this->restURI = $this->restURI."/".$fileName;
 		return $this->sendRequest($this->preparePropertiesForRequest($this),array(), self::VERB_DELETE);

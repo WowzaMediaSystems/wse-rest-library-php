@@ -1,3 +1,7 @@
+//
+// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
+//
 <?php
 namespace com\wowza;
 use App\Core as Core;
@@ -7,29 +11,29 @@ class Wowza{
 	const VERB_GET = "GET";
 	const VERB_DELETE = "DELETE";
 	const VERB_PUT = "PUT";
-	
+
 	private $useDigest = false;
 	private $host = WOWZA_HOST;
 	private $serverInstance = WOWZA_SERVER_INSTANCE;
-	private $vhostInstance = WOWZA_VHOST_INSTANCE; 
+	private $vhostInstance = WOWZA_VHOST_INSTANCE;
 	private $username = WOWZA_USERNAME;
 	private $password = WOWZA_PASSWORD;
 
 	public function __construct(){ }
-	
+
 	protected function getHost(){
 		return $this->host;
 	}
-	
+
 	protected function getServerInstance(){
 		return $this->serverInstance;
 	}
-	
+
 	protected function getVHostInstance(){
 		return $this->vhostInstance;
 	}
- 	
-	protected function getEntites($args, $baseURI) { 
+
+	protected function getEntites($args, $baseURI) {
 		$entities = array ();
 		for($i = 0; $i < count($args); $i ++) {
 			$arg = $args[$i];
@@ -41,7 +45,7 @@ class Wowza{
 					else{
 						call_user_func_array ( array (
 								$arg,
-								"setURI" 
+								"setURI"
 						), array (
 								$baseURI
 						) );
@@ -51,8 +55,8 @@ class Wowza{
 			}
 		}
 		return $entities;
- 	} 
- 	
+ 	}
+
  	protected function debug($str){
  		if(DEBUG){
  			if(!is_string($str)){
@@ -60,9 +64,9 @@ class Wowza{
  			}
  			echo $str."\n";
  		}
- 	} 
- 	
-	protected function sendRequest($props, $entities, $verbType=self::VERB_POST, $queryParams=null){  
+ 	}
+
+	protected function sendRequest($props, $entities, $verbType=self::VERB_POST, $queryParams=null){
 		if(isset($props->restURI) && !empty($props->restURI)){
 			if(count($entities)>0){
 				for($i=0; $i<count($entities); $i++){
@@ -74,23 +78,23 @@ class Wowza{
 				}
 			}
 			$json = json_encode($props);
-			
+
 			$restURL = $props->restURI;
 			if(!is_null($queryParams)){
 				$restURL .= "?".$queryParams;
 			}
 			$this->debug("JSON REQUEST to {$restURL} with verb {$verbType}: ".$json);
-			
-			$ch = curl_init($restURL);                                                                             
-			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $verbType);                                                  
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $json);      
-			
-			if($this->useDigest){                                                  
-				curl_setopt($ch, CURLOPT_USERPWD, $this->username . ":" . $this->password);                                                            
-				curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);   	
+
+			$ch = curl_init($restURL);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $verbType);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+
+			if($this->useDigest){
+				curl_setopt($ch, CURLOPT_USERPWD, $this->username . ":" . $this->password);
+				curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
 			}
-			
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 								'Accept:application/json; charset=utf-8',
 								'Content-type:application/json; charset=utf-8',
@@ -98,9 +102,9 @@ class Wowza{
 					));
 			$contents = curl_exec($ch);
 			curl_close($ch);
-			
+
 			$this->debug("RETURN: ".$contents);
-		 
+
 			return json_decode($contents);
 		}
 		return false;

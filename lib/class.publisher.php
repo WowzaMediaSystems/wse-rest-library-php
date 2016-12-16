@@ -1,37 +1,41 @@
+//
+// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
+//
 <?php
 namespace com\wowza;
 class Publisher extends Wowza{
-	private $restURI = ""; 
+	private $restURI = "";
 	private $name = "";
 	private $password = "";
-	 
+
 	private $_skip = array();
 	private $_additional = array();
-	
- 
-	public function __construct($publisherName=null){   
+
+
+	public function __construct($publisherName=null){
 		$this->name = $publisherName;
-		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/publishers"; 
-	}	
-	
-	public function create($password){   
-		$this->restURI = $this->restURI; 
+		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/publishers";
+	}
+
+	public function create($password){
+		$this->restURI = $this->restURI;
 		$this->password = $password;
-		$response = $this->sendRequest($this->preparePropertiesForRequest($this),array()); 
+		$response = $this->sendRequest($this->preparePropertiesForRequest($this),array());
 		return $response;
-	} 
-	
-	public function getAll(){ 
+	}
+
+	public function getAll(){
 		$this->_skip["name"] = true;
-		$this->_skip["password"] = true; 
+		$this->_skip["password"] = true;
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_GET);
 	}
-	
-	public function remove(){ 
+
+	public function remove(){
 		$this->restURI = $this->restURI."/".$this->name;
 		return $this->sendRequest($this->preparePropertiesForRequest($this),array(), self::VERB_DELETE);
 	}
- 
+
 	protected function getAdvancedSettings($urlProps){
 		if(is_array($urlProps)){
 			$items = array();
@@ -49,10 +53,10 @@ class Publisher extends Wowza{
 			return $item;
 		}
 	}
-	
+
 	protected function preparePropertiesForRequest(){
 		$classPropNames = get_class_vars(get_class($this));
- 
+
 		$props = new \stdClass();
 		foreach($classPropNames as $key=>$val){
 			if(isset($this->$key)){
@@ -65,7 +69,7 @@ class Publisher extends Wowza{
 				$props->$key = $this->$key;
 			}
 		}
-	
+
 		if(count($this->_additional)>0){
 			foreach($this->_additional as $key=>$val){
 				$props->$key=$val;
