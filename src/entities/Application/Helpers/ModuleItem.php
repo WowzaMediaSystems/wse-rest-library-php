@@ -4,7 +4,7 @@
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 
-namespace com\wowza\entities\application\helpers;
+namespace Com\Wowza\Entities\Application\Helpers;
 
 class ModuleItem
 {

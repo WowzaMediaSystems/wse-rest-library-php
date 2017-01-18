@@ -3,9 +3,9 @@
 // This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
-namespace com\wowza;
+namespace Com\Wowza;
 
-use com\wowza\entities\application\helpers\Settings;
+use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Application extends Wowza
 {
@@ -57,12 +57,12 @@ class Application extends Wowza
     }
 
     public function create(
-        entities\application\StreamConfig $streamConfig,
-        entities\application\SecurityConfig $securityConfig = null,
-        entities\application\Modules $modules = null,
-        entities\application\DvrConfig $dvrConfig = null,
-        entities\application\TranscoderConfig $transConfig = null,
-        entities\application\DrmConfig $drmConfig = null
+        Entities\Application\StreamConfig $streamConfig,
+        Entities\Application\SecurityConfig $securityConfig = null,
+        Entities\Application\Modules $modules = null,
+        Entities\Application\DvrConfig $dvrConfig = null,
+        Entities\Application\TranscoderConfig $transConfig = null,
+        Entities\Application\DrmConfig $drmConfig = null
     ) {
         $entities = $this->getEntites(func_get_args(), $this->restURI);
 
@@ -70,12 +70,12 @@ class Application extends Wowza
     }
 
     public function update(
-        entities\application\StreamConfig $streamConfig,
-        entities\application\SecurityConfig $securityConfig = null,
-        entities\application\Modules $modules = null,
-        entities\application\DvrConfig $dvrConfig = null,
-        entities\application\TranscoderConfig $transConfig = null,
-        entities\application\DrmConfig $drmConfig = null
+        Entities\Application\StreamConfig $streamConfig,
+        Entities\Application\SecurityConfig $securityConfig = null,
+        Entities\Application\Modules $modules = null,
+        Entities\Application\DvrConfig $dvrConfig = null,
+        Entities\Application\TranscoderConfig $transConfig = null,
+        Entities\Application\DrmConfig $drmConfig = null
     ) {
         $entities = $this->getEntites(func_get_args(), $this->restURI);
 

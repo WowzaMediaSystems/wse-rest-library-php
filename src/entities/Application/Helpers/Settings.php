@@ -1,6 +1,6 @@
 <?php
 
-namespace com\wowza\entities\application\helpers;
+namespace Com\Wowza\Entities\Application\Helpers;
 
 class Settings
 {

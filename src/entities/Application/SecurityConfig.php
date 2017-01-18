@@ -4,9 +4,9 @@
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 
-namespace com\wowza\entities\application;
+namespace Com\Wowza\Entities\Application;
 
-use com\wowza\entities\Entity;
+use Com\Wowza\entities\Entity;
 
 class SecurityConfig extends Entity
 {
