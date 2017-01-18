@@ -16,8 +16,6 @@ class StreamFile extends Wowza
     private $_applicationName = "live";
     private $_mediaCasterType = "rtp";
     private $_applicationInstance = "_definst_";
-    private $_skip = [];
-    private $_additional = [];
 
     public function __construct(
         Settings $settings,
