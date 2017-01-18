@@ -16,7 +16,7 @@ class Wowza
     const VERB_DELETE = "DELETE";
     const VERB_PUT = "PUT";
 
-    protected $restURI = "";
+    pro $restURI = "";
     protected $_skip = [];
     protected $_additional = [];
 
@@ -125,9 +125,9 @@ class Wowza
         return false;
     }
 
-    protected function preparePropertiesForRequest()
+    protected function preparePropertiesForRequest($class)
     {
-        $classPropNames = get_class_vars(get_class($this));
+        $classPropNames = get_class_vars(get_class($class));
 
         $props = new \stdClass();
         foreach ($classPropNames as $key => $val) {

@@ -23,16 +23,24 @@ class SmilFile extends Wowza
         $this->restURI = $this->restURI . "/" . $fileName;
         $this->smilStreams = $streams;
 
-        $response = $this->sendRequest($this->preparePropertiesForRequest(), []);
+        $response = $this->sendRequest($this->preparePropertiesForRequest($this), []);
 
         return $response;
+    }
+
+    public function get($fileName)
+    {
+        $this->_skip["smilStreams"] = true;
+        $this->restURI = $this->restURI . "/" . $fileName;
+
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
     }
 
     public function getAll()
     {
         $this->_skip["smilStreams"] = true;
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
     }
 
     public function remove($fileName)
@@ -40,7 +48,6 @@ class SmilFile extends Wowza
         $this->_skip["smilStreams"] = true;
         $this->restURI = $this->restURI . "/" . $fileName;
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_DELETE);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_DELETE);
     }
-
 }

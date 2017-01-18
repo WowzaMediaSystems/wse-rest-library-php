@@ -40,7 +40,7 @@ class User extends Wowza
         $this->_skip["password"] = true;
         $this->_skip["group"] = true;
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
     }
 
     public function remove()
@@ -48,31 +48,5 @@ class User extends Wowza
         $this->restURI = $this->restURI . "/" . $this->userName;
 
         return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_DELETE);
-    }
-
-    protected function preparePropertiesForRequest()
-    {
-        $classPropNames = get_class_vars(get_class($this));
-
-        $props = new \stdClass();
-        foreach ($classPropNames as $key => $val) {
-            if (isset($this->$key)) {
-                if (preg_match("/^(\_)/", $key)) {
-                    continue;
-                }
-                if (isset($this->_skip[$key])) {
-                    continue;
-                }
-                $props->$key = $this->$key;
-            }
-        }
-
-        if (count($this->_additional) > 0) {
-            foreach ($this->_additional as $key => $val) {
-                $props->$key = $val;
-            }
-        }
-
-        return $props;
     }
 }

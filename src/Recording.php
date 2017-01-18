@@ -83,7 +83,7 @@ class Recording extends Wowza
         $this->currentDuration = $currentDuration;
         $this->recordingStartTime = $recordingStartTime;
 
-        $response = $this->sendRequest($this->preparePropertiesForRequest(), []);
+        $response = $this->sendRequest($this->preparePropertiesForRequest($this), []);
 
         return $response;
     }
@@ -92,7 +92,7 @@ class Recording extends Wowza
     {
         $this->setNoParams();
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
     }
 
     public function stop($recordName)
@@ -100,7 +100,7 @@ class Recording extends Wowza
         $this->restURI = $this->restURI . "/" . $recordName . "/actions/stopRecording";
         $this->setNoParams();
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
     }
 
     public function split($recordName)
@@ -108,7 +108,7 @@ class Recording extends Wowza
         $this->restURI = $this->restURI . "/" . $recordName . "/actions/splitRecording";
         $this->setNoParams();
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
     }
 
     private function setNoParams()

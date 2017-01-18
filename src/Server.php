@@ -22,7 +22,7 @@ class Server extends Wowza
         $this->restURI .= "/users";
         $entities = $this->getEntites([], $this->restURI);
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
     }
 
     public function createUser($name, $password, $groups = [])
@@ -33,14 +33,14 @@ class Server extends Wowza
         $this->_additional["groups"] = $groups;
         $entities = $this->getEntites([], $this->restURI);
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), []);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), []);
     }
 
     public function removeUser($name)
     {
         $this->restURI .= "/users/{$name}";
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_DELETE);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_DELETE);
     }
 
     public function getRestURI()

@@ -40,7 +40,7 @@ class Application extends Wowza
         $this->_skip["clientStreamWriteAccess"] = true;
         $this->_skip["description"] = true;
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
     }
 
     public function getAll()
@@ -52,7 +52,7 @@ class Application extends Wowza
         $this->_skip["description"] = true;
         $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications";
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
     }
 
     public function create(
@@ -65,7 +65,7 @@ class Application extends Wowza
     ) {
         $entities = $this->getEntites(func_get_args(), $this->restURI);
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), $entities);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), $entities);
     }
 
     public function update(
@@ -78,12 +78,12 @@ class Application extends Wowza
     ) {
         $entities = $this->getEntites(func_get_args(), $this->restURI);
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), $entities, self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), $entities, self::VERB_PUT);
     }
 
     public function remove()
     {
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_DELETE);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_DELETE);
     }
 
     public function getRestURI()
