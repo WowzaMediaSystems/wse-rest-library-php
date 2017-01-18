@@ -1,6 +1,5 @@
 {
   "name": "wowza/wse-rest-library-php",
-  "type": "library",
   "homepage": "https://www.wowza.com",
   "autoload": {
     "psr-4": {
