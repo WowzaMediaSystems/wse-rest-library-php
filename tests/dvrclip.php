@@ -6,7 +6,10 @@
 use com\wowza\DvrClipExtraction;
 require_once("../include/config.php");
 
-$sf = new com\wowza\DvrClipExtraction("ndvr");
+// Create settings
+$settings = new \com\wowza\entities\application\helpers\Settings();
+
+$sf = new com\wowza\DvrClipExtraction($settings, "ndvr");
 $response = $sf->clearCache();
 // $response = $sf->debugConversions("tmp127");
 // $sf->convertByDurationWithEndTimeTime("tmp123", time(), 5000);

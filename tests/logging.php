@@ -5,7 +5,10 @@
 //
 require_once("../include/config.php");
 
-$sf = new com\wowza\Logging();
+// Create settings
+$settings = new \com\wowza\entities\application\helpers\Settings();
+
+$sf = new com\wowza\Logging($settings);
 $response = $sf->search("MediaCasterStreamValidator.init");
 // $response = $sf->getLineCount(10);
 // $response = $sf->getNewestFirst();

@@ -53,7 +53,10 @@ require_once("../include/config.php");
 // $streams[] = $stream0;
 // $streams[] = $stream1;
 
-$sf = new com\wowza\SmilFile("live");
+// Create settings
+$settings = new \com\wowza\entities\application\helpers\Settings();
+
+$sf = new com\wowza\SmilFile($settings, "live");
 $response = $sf->remove("newsmil");
 // $response = $sf->create("newsmil", $streams);
 

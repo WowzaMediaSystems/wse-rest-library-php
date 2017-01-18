@@ -5,7 +5,10 @@
 //
 require_once("../include/config.php");
 
-$sf = new com\wowza\Publisher("myUser");
+// Create settings
+$settings = new \com\wowza\entities\application\helpers\Settings();
+
+$sf = new com\wowza\Publisher($settings, "myUser");
 // $response = $sf->create("myPass");
 // $response = $sf->remove();
 $response = $sf->getAll();

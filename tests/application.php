@@ -1,14 +1,13 @@
-<?php
 //
 // This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
+<?php
 require_once("../include/config.php");
 
 // example setting up a stream configuration element
 $streamConfig =new com\wowza\entities\application\StreamConfig();
 $streamConfig->setStreamType("live");
-$streamConfig->setHttpRandomizeMediaName(false);
 $streamConfig->setLiveStreamPacketizer(array("sanjosestreamingpacketizer","cupertinostreamingpacketizer"));
 
 // example setting up a security configuration element
@@ -39,20 +38,16 @@ $securityConfig->playAuthenticationMethod = "none";
 $modules = new com\wowza\entities\application\Modules();
 $modules->moduleList[] = $modules->getModuleItem("ModuleCoreSecurity", "ModuleCoreSecurity", "com.wowza.wms.security.ModuleCoreSecurity");
 
+// Create settings
+$settings = new \com\wowza\entities\application\helpers\Settings();
+
 // Create this application
-$wowzaApplication = new com\wowza\Application("live");
-
-$advanced = new com\wowza\entities\application\AdvancedSettings();
-$advanced->advancedSettings[] = $advanced->getAdvItem("test","val22","String","true","true",null,"Common","/Root/Application");
-$response = $wowzaApplication->createAdvanced($advanced, $modules);
-
+$wowzaApplication = new com\wowza\Application($settings, "live");
 // var_dump($wowzaApplication->getAll());
 // var_dump($wowzaApplication->get());
 
-// $transcoderConfig = new com\wowza\entities\application\TranscoderConfig();
- 
 // $response = $wowzaApplication->create($streamConfig);
-// $response = $wowzaApplication->create($streamConfig, $securityConfig,$modules,null,$transcoderConfig);
+// $response = $wowzaApplication->create($streamConfig, $securityConfig,$modules);
 
 // Update the application
 // $response = $wowzaApplication->update($streamConfig);
@@ -60,4 +55,4 @@ $response = $wowzaApplication->createAdvanced($advanced, $modules);
 // Remove the application
 // $response = $wowzaApplication->remove();
 
-var_dump($response);
+// var_dump($response);
