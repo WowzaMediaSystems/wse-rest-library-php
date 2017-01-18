@@ -1,12 +1,11 @@
 {
   "name": "wowza/wse-rest-library-php",
   "type": "library",
-  "homepage": "https://www.wowza.com/",
+  "homepage": "https://www.wowza.com",
   "autoload": {
-    "psr-4": { "": "src/" },
-    "exclude-from-classmap": [
-      "/tests/"
-    ]
+    "psr-4": {
+      "Com\\Wowza\\": "src/"
+    }
   },
   "minimum-stability": "dev"
 }

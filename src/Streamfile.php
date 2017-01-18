@@ -4,9 +4,9 @@
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 
-namespace com\wowza;
+namespace Com\Wowza;
 
-use com\wowza\entities\application\helpers\Settings;
+use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class StreamFile extends Wowza
 {
@@ -56,7 +56,7 @@ class StreamFile extends Wowza
 
     public function create($urlProps, $mediaCasterType = "rtp", $applicationInstance = "_definst_")
     {
-        $sf = new entities\application\StreamFiles();
+        $sf = new Entities\Application\StreamFiles();
         $sf->id = "connectAppName=" . $this->_applicationName . "&appInstance={$applicationInstance}&mediaCasterType={$mediaCasterType}";
         $sf->href = $this->restURI . "/streamfiles/" . $sf->id;
 
@@ -93,7 +93,7 @@ class StreamFile extends Wowza
         if (is_array($urlProps)) {
             $items = [];
             foreach ($urlProps as $k => $v) {
-                $item = new entities\application\helpers\AdvancedSettingItem();
+                $item = new Entities\Application\Helpers\AdvancedSettingItem();
                 $item->name = $k;
                 $item->value = $v;
                 $items[] = $item;
@@ -101,7 +101,7 @@ class StreamFile extends Wowza
 
             return $items;
         } else {
-            $item = new entities\application\helpers\AdvancedSettingItem();
+            $item = new Entities\Application\Helpers\AdvancedSettingItem();
             $item->value = $urlProps;
 
             return $item;

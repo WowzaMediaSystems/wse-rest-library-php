@@ -3,9 +3,9 @@
 // This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
-namespace com\wowza;
+namespace Com\Wowza;
 
-use com\wowza\entities\application\helpers\Settings;
+use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Publisher extends Wowza
 {
@@ -48,7 +48,7 @@ class Publisher extends Wowza
         if (is_array($urlProps)) {
             $items = [];
             foreach ($urlProps as $k => $v) {
-                $item = new entities\application\helpers\AdvancedSettingItem();
+                $item = new Entities\Application\Helpers\AdvancedSettingItem();
                 $item->name = $k;
                 $item->value = $v;
                 $items[] = $item;
@@ -56,7 +56,7 @@ class Publisher extends Wowza
 
             return $items;
         } else {
-            $item = new entities\application\helpers\AdvancedSettingItem();
+            $item = new Entities\Application\Helpers\AdvancedSettingItem();
             $item->value = $urlProps;
 
             return $item;
