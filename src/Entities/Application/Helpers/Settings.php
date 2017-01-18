@@ -4,24 +4,62 @@ namespace Com\Wowza\Entities\Application\Helpers;
 
 class Settings
 {
+    /** @var bool */
+    private $debug;
+
+    /** @var string */
     private $host;
+
+    /** @var string */
     private $serverInstance;
+
+    /** @var string */
     private $vhostInstance;
+
+    /** @var string */
     private $username;
+
+    /** @var string */
     private $password;
 
     public function __construct(
+        $debug = false,
         $host = "http://localhost:8087/v2",
         $serverInstance = "_defaultServer_",
         $vhostInstance = "_defaultVHost_",
         $username = "admin",
         $password = "admin"
     ) {
+        $this->debug = $debug;
         $this->host = $host;
         $this->serverInstance = $serverInstance;
         $this->vhostInstance = $vhostInstance;
         $this->username = $username;
         $this->password = $password;
+    }
+
+    /**
+     * Get Debug.
+     *
+     * @return bool
+     */
+    public function isDebug()
+    {
+        return $this->debug;
+    }
+
+    /**
+     * Set Debug.
+     *
+     * @param bool $debug
+     *
+     * @return Settings
+     */
+    public function setDebug($debug)
+    {
+        $this->debug = $debug;
+
+        return $this;
     }
 
     /**

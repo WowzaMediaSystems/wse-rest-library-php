@@ -14,10 +14,6 @@ class User extends Wowza
     private $password = "";
     private $groups = [];
 
-    private $_skip = [];
-    private $_additional = [];
-
-
     public function __construct(Settings $settings, $userName = null)
     {
         parent::__construct($settings);

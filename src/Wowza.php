@@ -10,7 +10,6 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Wowza
 {
-    const DEBUG = true;
     const VERB_POST = "POST";
     const VERB_GET = "GET";
     const VERB_DELETE = "DELETE";
