@@ -69,7 +69,7 @@ class Wowza
 
     protected function debug($str)
     {
-        if (self::DEBUG) {
+        if ($this->settings->isDebug()) {
             if (!is_string($str)) {
                 $str = json_encode($str);
             }
