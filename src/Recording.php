@@ -9,7 +9,6 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Recording extends Wowza
 {
-    private $restURI = "";
     private $recordName = "myStream";
     private $instanceName = "_definst_";
     private $recorderState = "Waiting for stream";

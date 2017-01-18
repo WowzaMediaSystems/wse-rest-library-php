@@ -9,9 +9,6 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Logging extends Wowza
 {
-    private $restURI = "";
-
-
     public function __construct(Settings $settings)
     {
         parent::__construct($settings);

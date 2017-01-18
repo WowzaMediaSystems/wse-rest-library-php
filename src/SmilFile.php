@@ -10,7 +10,6 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class SmilFile extends Wowza
 {
-    private $restURI = "";
     private $smilStreams = [];
 
     public function __construct(Settings $settings, $appName)

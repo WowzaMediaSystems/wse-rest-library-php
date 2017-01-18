@@ -16,6 +16,7 @@ class Wowza
     const VERB_DELETE = "DELETE";
     const VERB_PUT = "PUT";
 
+    protected $restURI = "";
     protected $_skip = [];
     protected $_additional = [];
 

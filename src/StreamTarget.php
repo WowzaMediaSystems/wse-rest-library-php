@@ -10,7 +10,6 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class StreamTarget extends Wowza
 {
-    private $restURI = "";
     private $sourceStreamName = "myStream";
     private $entryName = "ppsource";
     private $profile = "rtmp";
