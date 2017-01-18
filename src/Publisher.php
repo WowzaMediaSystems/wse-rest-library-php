@@ -22,7 +22,7 @@ class Publisher extends Wowza
     public function create($password)
     {
         $this->password = $password;
-        $response = $this->sendRequest($this->preparePropertiesForRequest(), []);
+        $response = $this->sendRequest($this->preparePropertiesForRequest($this), []);
 
         return $response;
     }
@@ -32,14 +32,14 @@ class Publisher extends Wowza
         $this->_skip["name"] = true;
         $this->_skip["password"] = true;
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
     }
 
     public function remove()
     {
         $this->restURI = $this->restURI . "/" . $this->name;
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_DELETE);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_DELETE);
     }
 
     protected function getAdvancedSettings($urlProps)

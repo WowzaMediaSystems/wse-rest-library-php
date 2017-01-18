@@ -19,7 +19,6 @@ class StreamTarget extends Wowza
     private $password = null;
     private $streamName = "myStream";
 
-
     public function __construct(Settings $settings, $appName)
     {
         parent::__construct($settings);
@@ -44,7 +43,7 @@ class StreamTarget extends Wowza
         $this->password = (!is_null($password)) ? $password : $this->password;
         $this->streamName = (!is_null($streamName)) ? $streamName : $this->streamName;
 
-        $response = $this->sendRequest($this->preparePropertiesForRequest(), []);
+        $response = $this->sendRequest($this->preparePropertiesForRequest($this), []);
 
         return $response;
     }
@@ -53,7 +52,7 @@ class StreamTarget extends Wowza
     {
         $this->setNoParams();
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
     }
 
     private function setNoParams()
@@ -76,6 +75,6 @@ class StreamTarget extends Wowza
         $this->setNoParams();
         $this->restURI = $this->restURI . "/" . $entryName;
 
-        return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_DELETE);
+        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_DELETE);
     }
 }
