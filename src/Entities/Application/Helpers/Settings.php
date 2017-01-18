@@ -22,13 +22,28 @@ class Settings
     /** @var string */
     private $password;
 
+    /** @var bool */
+    private $useDigest;
+
+    /**
+     * Settings constructor.
+     *
+     * @param bool   $debug
+     * @param string $host
+     * @param string $serverInstance
+     * @param string $vhostInstance
+     * @param string $username
+     * @param string $password
+     * @param bool   $useDigest
+     */
     public function __construct(
         $debug = false,
         $host = "http://localhost:8087/v2",
         $serverInstance = "_defaultServer_",
         $vhostInstance = "_defaultVHost_",
         $username = "admin",
-        $password = "admin"
+        $password = "admin",
+        $useDigest = false
     ) {
         $this->debug = $debug;
         $this->host = $host;
@@ -36,6 +51,7 @@ class Settings
         $this->vhostInstance = $vhostInstance;
         $this->username = $username;
         $this->password = $password;
+        $this->useDigest = $useDigest;
     }
 
     /**
@@ -178,6 +194,30 @@ class Settings
     public function setPassword($password)
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get UseDigest.
+     *
+     * @return bool
+     */
+    public function isUseDigest()
+    {
+        return $this->useDigest;
+    }
+
+    /**
+     * Set UseDigest.
+     *
+     * @param bool $useDigest
+     *
+     * @return Settings
+     */
+    public function setUseDigest($useDigest)
+    {
+        $this->useDigest = $useDigest;
 
         return $this;
     }
