@@ -19,7 +19,6 @@ class Wowza
     protected $_skip = [];
     protected $_additional = [];
 
-    private $useDigest = false;
     private $settings;
 
     public function __construct(Settings $settings)
@@ -101,7 +100,7 @@ class Wowza
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $verbType);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
 
-            if ($this->useDigest) {
+            if ($this->settings->isUseDigest()) {
                 curl_setopt($ch, CURLOPT_USERPWD,
                     $this->settings->getUsername() . ":" . $this->settings->getPassword());
                 curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
