@@ -5,7 +5,10 @@
 <?php
 require_once("../include/config.php");
 
-$sf = new com\wowza\StreamTarget("live");
+// Create settings
+$settings = new \com\wowza\entities\application\helpers\Settings();
+
+$sf = new com\wowza\StreamTarget($settings, "live");
 $response = $sf->remove("ppsource");
 // $response = $sf->create("myStream","ppsource","rtmp","locahost",null, null,"myStream");
 // $response = $sf->getAll();

@@ -38,8 +38,11 @@ $securityConfig->playAuthenticationMethod = "none";
 $modules = new com\wowza\entities\application\Modules();
 $modules->moduleList[] = $modules->getModuleItem("ModuleCoreSecurity", "ModuleCoreSecurity", "com.wowza.wms.security.ModuleCoreSecurity");
 
+// Create settings
+$settings = new \com\wowza\entities\application\helpers\Settings();
+
 // Create this application
-$wowzaApplication = new com\wowza\Application("live");
+$wowzaApplication = new com\wowza\Application($settings, "live");
 // var_dump($wowzaApplication->getAll());
 // var_dump($wowzaApplication->get());
 

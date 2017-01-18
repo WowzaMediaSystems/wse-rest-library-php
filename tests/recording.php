@@ -5,7 +5,10 @@
 <?php
 require_once("../include/config.php");
 
-$sf = new com\wowza\Recording();
+// Create settings
+$settings = new \com\wowza\entities\application\helpers\Settings();
+
+$sf = new com\wowza\Recording($settings);
 $response = $sf->split("myStream");
 
 // $recordName= "myStream";
