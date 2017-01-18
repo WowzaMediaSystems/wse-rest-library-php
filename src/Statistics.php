@@ -10,8 +10,6 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Statistics extends Wowza
 {
-    private $restURI = "";
-
     public function __construct(Settings $settings)
     {
         parent::__construct($settings);
@@ -44,6 +42,4 @@ class Statistics extends Wowza
 
         return $this->sendRequest($this->preparePropertiesForRequest(), [], self::VERB_GET);
     }
-
-
 }

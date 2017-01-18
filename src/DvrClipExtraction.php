@@ -9,8 +9,6 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class DvrClipExtraction extends Wowza
 {
-    private $restURI = "";
-
     public function __construct(Settings $settings, $appName, $appInstance = "_definst_")
     {
         parent::__construct($settings);

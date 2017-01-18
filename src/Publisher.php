@@ -9,7 +9,6 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Publisher extends Wowza
 {
-    private $restURI = "";
     private $name = "";
     private $password = "";
 

@@ -10,8 +10,6 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Server extends Wowza
 {
-    private $restURI = "";
-
     public function __construct(
         Settings $settings
     ) {

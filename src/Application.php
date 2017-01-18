@@ -9,7 +9,6 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Application extends Wowza
 {
-    private $restURI = "";
     private $appType = "Live";
     private $name = "";
     private $clientStreamReadAccess = "*";

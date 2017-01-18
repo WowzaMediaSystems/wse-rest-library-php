@@ -6,9 +6,10 @@
 
 namespace Com\Wowza;
 
+use Com\Wowza\Entities\Application\Helpers\Settings;
+
 class User extends Wowza
 {
-    private $restURI = "";
     private $userName = "";
     private $password = "";
     private $groups = [];
@@ -17,8 +18,9 @@ class User extends Wowza
     private $_additional = [];
 
 
-    public function __construct($userName = null)
+    public function __construct(Settings $settings, $userName = null)
     {
+        parent::__construct($settings);
         $this->userName = $userName;
         $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/users";
     }
