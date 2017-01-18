@@ -19,20 +19,20 @@ class Logging extends Wowza
     {
         $this->restURI = $this->restURI . "?order=newestFirst";
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     public function getLineCount($num)
     {
         $this->restURI = $this->restURI . "/wowzastreamingengine_access.log?lineCount={$num}";
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     public function search($str)
     {
         $this->restURI = $this->restURI . "/wowzastreamingengine_access.log?search=" . $str;
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 }

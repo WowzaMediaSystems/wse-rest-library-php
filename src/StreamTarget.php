@@ -10,14 +10,14 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class StreamTarget extends Wowza
 {
-    private $sourceStreamName = "myStream";
-    private $entryName = "ppsource";
-    private $profile = "rtmp";
-    private $host = "localhost";
-    private $application = "live";
-    private $userName = null;
-    private $password = null;
-    private $streamName = "myStream";
+    protected $sourceStreamName = "myStream";
+    protected $entryName = "ppsource";
+    protected $profile = "rtmp";
+    protected $host = "localhost";
+    protected $application = "live";
+    protected $userName = null;
+    protected $password = null;
+    protected $streamName = "myStream";
 
     public function __construct(Settings $settings, $appName)
     {
@@ -43,7 +43,7 @@ class StreamTarget extends Wowza
         $this->password = (!is_null($password)) ? $password : $this->password;
         $this->streamName = (!is_null($streamName)) ? $streamName : $this->streamName;
 
-        $response = $this->sendRequest($this->preparePropertiesForRequest($this), []);
+        $response = $this->sendRequest($this->preparePropertiesForRequest(self::class), []);
 
         return $response;
     }
@@ -52,7 +52,7 @@ class StreamTarget extends Wowza
     {
         $this->setNoParams();
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     private function setNoParams()
@@ -75,6 +75,6 @@ class StreamTarget extends Wowza
         $this->setNoParams();
         $this->restURI = $this->restURI . "/" . $entryName;
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_DELETE);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
     }
 }

@@ -10,9 +10,9 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class User extends Wowza
 {
-    private $userName = "";
-    private $password = "";
-    private $groups = [];
+    protected $userName = "";
+    protected $password = "";
+    protected $groups = [];
 
     public function __construct(Settings $settings, $userName = null)
     {
@@ -25,7 +25,7 @@ class User extends Wowza
     {
         $this->password = $password;
         $this->groups = $group;
-        $response = $this->sendRequest($this->preparePropertiesForRequest($this), []);
+        $response = $this->sendRequest($this->preparePropertiesForRequest(self::class), []);
 
         return $response;
     }
@@ -36,13 +36,13 @@ class User extends Wowza
         $this->_skip["password"] = true;
         $this->_skip["group"] = true;
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     public function remove()
     {
         $this->restURI = $this->restURI . "/" . $this->userName;
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_DELETE);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
     }
 }

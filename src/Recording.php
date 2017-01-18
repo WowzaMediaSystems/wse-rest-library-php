@@ -9,27 +9,27 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Recording extends Wowza
 {
-    private $recordName = "myStream";
-    private $instanceName = "_definst_";
-    private $recorderState = "Waiting for stream";
-    private $defaultRecorder = "true";
-    private $segmentationType = "None";
-    private $outputPath = "";
-    private $baseFile = "myrecord.mp4";
-    private $fileFormat = "MP4";
-    private $fileVersionDelegateName = "com.wowza.wms.livestreamrecord.manager.StreamRecorderFileVersionDelegate";
-    private $fileTemplate = "\${BaseFileName}_\${RecordingStartTime}_\${SegmentNumber}";
-    private $segmentDuration = "900000";
-    private $segmentSize = "10485760";
-    private $segmentSchedule = "0 * * * * *";
-    private $recordData = "true";
-    private $startOnKeyFrame = "true";
-    private $splitOnTcDiscontinuity = "false";
-    private $option = "Version existing file";
-    private $moveFirstVideoFrameToZero = "true";
-    private $currentSize = "0";
-    private $currentDuration = "0";
-    private $recordingStartTime = "";
+    protected $recordName = "myStream";
+    protected $instanceName = "_definst_";
+    protected $recorderState = "Waiting for stream";
+    protected $defaultRecorder = "true";
+    protected $segmentationType = "None";
+    protected $outputPath = "";
+    protected $baseFile = "myrecord.mp4";
+    protected $fileFormat = "MP4";
+    protected $fileVersionDelegateName = "com.wowza.wms.livestreamrecord.manager.StreamRecorderFileVersionDelegate";
+    protected $fileTemplate = "\${BaseFileName}_\${RecordingStartTime}_\${SegmentNumber}";
+    protected $segmentDuration = "900000";
+    protected $segmentSize = "10485760";
+    protected $segmentSchedule = "0 * * * * *";
+    protected $recordData = "true";
+    protected $startOnKeyFrame = "true";
+    protected $splitOnTcDiscontinuity = "false";
+    protected $option = "Version existing file";
+    protected $moveFirstVideoFrameToZero = "true";
+    protected $currentSize = "0";
+    protected $currentDuration = "0";
+    protected $recordingStartTime = "";
 
     public function __construct(Settings $settings)
     {
@@ -83,7 +83,7 @@ class Recording extends Wowza
         $this->currentDuration = $currentDuration;
         $this->recordingStartTime = $recordingStartTime;
 
-        $response = $this->sendRequest($this->preparePropertiesForRequest($this), []);
+        $response = $this->sendRequest($this->preparePropertiesForRequest(self::class), []);
 
         return $response;
     }
@@ -92,7 +92,7 @@ class Recording extends Wowza
     {
         $this->setNoParams();
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     public function stop($recordName)
@@ -100,7 +100,7 @@ class Recording extends Wowza
         $this->restURI = $this->restURI . "/" . $recordName . "/actions/stopRecording";
         $this->setNoParams();
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
     public function split($recordName)
@@ -108,7 +108,7 @@ class Recording extends Wowza
         $this->restURI = $this->restURI . "/" . $recordName . "/actions/splitRecording";
         $this->setNoParams();
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
     private function setNoParams()
