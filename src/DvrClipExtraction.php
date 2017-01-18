@@ -17,7 +17,7 @@ class DvrClipExtraction extends Wowza
 
     public function create()
     {
-        $response = $this->sendRequest($this->preparePropertiesForRequest($this), []);
+        $response = $this->sendRequest($this->preparePropertiesForRequest(self::class), []);
 
         return $response;
     }
@@ -26,7 +26,7 @@ class DvrClipExtraction extends Wowza
     {
         $this->restURI = $this->restURI . "/" . $name;
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     public function convertGroup($nameArr)
@@ -34,7 +34,7 @@ class DvrClipExtraction extends Wowza
         $this->setNoParams();
         $this->restURI = $this->restURI . "/actions/convert?dvrConverterStoreList=" . implode(",", $nameArr);
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
     /*
@@ -70,21 +70,21 @@ class DvrClipExtraction extends Wowza
 
         $this->restURI = $this->restURI . "/{$name}/actions/convert{$query}";
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
     public function clearCache()
     {
         $this->restURI = $this->restURI . "/actions/expire";
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
     public function debugConversions($name)
     {
         $this->restURI = $this->restURI . "/{$name}/actions/convert?dvrConverterDebugConversions=true";
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
     /*
@@ -112,7 +112,7 @@ class DvrClipExtraction extends Wowza
         $query = (strlen($query) == 1) ? "" : "?" . $query;
         $this->restURI = $this->restURI . "/{$name}/actions/convert{$query}";
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
     public function convertByDurationWithEndTimeTime($name, $endTime, $duration, $outputFileName = null)
@@ -137,14 +137,14 @@ class DvrClipExtraction extends Wowza
         $query = (strlen($query) == 1) ? "" : "?" . $query;
         $this->restURI = $this->restURI . "/{$name}/actions/convert{$query}";
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
     public function getAll()
     {
         $this->setNoParams();
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     private function setNoParams()
@@ -156,6 +156,6 @@ class DvrClipExtraction extends Wowza
         $this->setNoParams();
         $this->restURI = $this->restURI . "/" . $fileName;
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_DELETE);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
     }
 }

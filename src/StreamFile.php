@@ -10,12 +10,12 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class StreamFile extends Wowza
 {
-    private $name = "";
+    protected $name = "";
 
     // not included in json generated as indicated by _[varname]
-    private $_applicationName = "live";
-    private $_mediaCasterType = "rtp";
-    private $_applicationInstance = "_definst_";
+    protected $_applicationName = "live";
+    protected $_mediaCasterType = "rtp";
+    protected $_applicationInstance = "_definst_";
 
     public function __construct(
         Settings $settings,
@@ -41,14 +41,14 @@ class StreamFile extends Wowza
         $this->_skip["name"] = true;
         $this->restURI .= "/" . $this->name;
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     public function getAll()
     {
         $this->_skip["name"] = true;
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_GET);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     public function create($urlProps, $mediaCasterType = "rtp", $applicationInstance = "_definst_")
@@ -59,7 +59,7 @@ class StreamFile extends Wowza
 
         $entities = $this->getEntites([$sf], null);
         $this->restURI = $this->restURI . "/" . $this->name;
-        $response = $this->sendRequest($this->preparePropertiesForRequest($this), $entities);
+        $response = $this->sendRequest($this->preparePropertiesForRequest(self::class), $entities);
         if ($response->success) {
             $items = $this->getAdvancedSettings($urlProps);
 
@@ -82,7 +82,7 @@ class StreamFile extends Wowza
 
         $entities = $this->getEntites(func_get_args(), null);
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
     private function getAdvancedSettings($urlProps)
@@ -118,7 +118,7 @@ class StreamFile extends Wowza
         $this->_skip["name"] = 1;
         $this->restURI = $this->restURI . "/" . $this->name;
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_DELETE);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
     }
 
     public function connect($subFolder = "")
@@ -130,7 +130,7 @@ class StreamFile extends Wowza
         $streamFilePath = (!empty($subFolder)) ? urlencode($subFolder . "/" . $this->name) : $this->name;
         $this->restURI = $this->restURI . "/" . $streamFilePath . "/actions/connect";
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT,
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT,
             "connectAppName=" . $this->_applicationName . "&appInstance=" . $this->_applicationInstance . "&mediaCasterType=" . $this->_mediaCasterType);
     }
 
@@ -151,6 +151,6 @@ class StreamFile extends Wowza
         $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/" . $this->_applicationName . "/instances/";
         $this->restURI .= $this->_applicationInstance . "/incomingstreams/" . $this->name . ".stream/actions/disconnectStream";
 
-        return $this->sendRequest($this->preparePropertiesForRequest($this), [], self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 }

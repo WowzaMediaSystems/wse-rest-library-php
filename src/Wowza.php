@@ -125,7 +125,7 @@ class Wowza
 
     protected function preparePropertiesForRequest($class)
     {
-        $classPropNames = get_class_vars(get_class($class));
+        $classPropNames = get_class_vars($class);
 
         $props = new \stdClass();
         foreach ($classPropNames as $key => $val) {
