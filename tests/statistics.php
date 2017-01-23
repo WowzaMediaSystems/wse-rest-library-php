@@ -5,13 +5,16 @@
 <?php
 require_once("../include/config.php");
 
-$sf = new com\wowza\Statistics();
+// Create settings
+$settings = new \com\wowza\entities\application\helpers\Settings();
+
+$sf = new com\wowza\Statistics($settings);
 
 // get stats per application
-$wowzaApplication = new com\wowza\Application("vod");
+$wowzaApplication = new com\wowza\Application($settings, "vod");
 
 // get total server stats
-$server = new com\wowza\Server("http://wowza.edgetrac.net:8087/v2");
+$server = new com\wowza\Server($settings, "http://wowza.edgetrac.net:8087/v2");
 $response = $sf->getServerStatistics($server);
 
 // get stats historical for given application

@@ -1,0 +1,10 @@
+{
+  "name": "wowza/wse-rest-library-php",
+  "homepage": "https://www.wowza.com",
+  "autoload": {
+    "psr-4": {
+      "Com\\Wowza\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
