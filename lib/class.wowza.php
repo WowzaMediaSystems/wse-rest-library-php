@@ -58,7 +58,7 @@ class Wowza{
  	}
 
  	protected function debug($str){
- 		if(DEBUG){
+ 		if(self::DEBUG){
  			if(!is_string($str)){
  				$str = json_encode($str);
  			}
