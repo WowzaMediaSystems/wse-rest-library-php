@@ -1,12 +1,12 @@
+<?php
 //
 // This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
-<?php
 namespace com\wowza;
 class Recording extends Wowza{
 	private $restURI = "";
-	private $recordName = "myStream";
+	private $recorderName = "myStream";
 	private $instanceName = "_definst_";
 	private $recorderState = "Waiting for stream";
 	private $defaultRecorder = "true";
@@ -35,17 +35,17 @@ class Recording extends Wowza{
 		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/vhosts/_defaultVHost_/applications/live/instances/_definst_/streamrecorders";
 	}
 
-	public function create($recordName, $instanceName, $recorderState, $defaultRecorder,
+	public function create($recorderName, $instanceName, $recorderState, $defaultRecorder,
 					$segmentationType, $outputPath, $baseFile, $fileFormat, $fileVersionDelegateName, $fileTemplate,
 					$segmentDuration, $segmentSize, $segmentSchedule, $recordData, $startOnKeyFrame, $splitOnTcDiscontinuity,
 					$option, $moveFirstVideoFrameToZero, $currentSize, $currentDuration, $recordingStartTime
 	){
 
-		$this->recordName = $recordName;
+		$this->recorderName = $recorderName;
 		$this->instanceName = $instanceName;
-		$this->recordName = $recorderState;
-		$this->recordName = $defaultRecorder;
-		$this->recordName = $segmentationType;
+		$this->recorderState = $recorderState;
+		$this->defaultRecorder = $defaultRecorder;
+		$this->segmentationType = $segmentationType;
 		$this->outputPath = $outputPath;
 		$this->baseFile = $baseFile;
 		$this->fileFormat = $fileFormat;
@@ -72,7 +72,7 @@ class Recording extends Wowza{
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_GET);
 	}
 
-	public function stop($recordName){
+	public function stop($recorderName){
 		$this->restURI = $this->restURI."/".$recordName."/actions/stopRecording";
 		$this->setNoParams();
 		return $this->sendRequest($this->preparePropertiesForRequest($this),array(), self::VERB_PUT);
@@ -85,7 +85,7 @@ class Recording extends Wowza{
 	}
 
 	private function setNoParams(){
-		$this->_skip["recordName"] = true;
+		$this->_skip["recorderName"] = true;
 		$this->_skip["instanceName"] = true;
 		$this->_skip["recorderState"] = true;
 		$this->_skip["defaultRecorder"] = true;
