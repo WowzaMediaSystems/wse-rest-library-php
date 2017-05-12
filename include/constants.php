@@ -7,5 +7,9 @@ define("BASE_DIR", dirname(dirname(__FILE__)));
 define("WOWZA_HOST","http://localhost:8087/v2");
 define("WOWZA_SERVER_INSTANCE", "_defaultServer_");
 define("WOWZA_VHOST_INSTANCE", "_defaultVHost_");
+
+// for digest auth
 define("WOWZA_USERNAME", "admin");
 define("WOWZA_PASSWORD", "admin");
+define("WOWZA_USE_DIGEST", false);
+define("WOWZA_DEBUG", true);
