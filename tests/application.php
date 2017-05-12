@@ -8,6 +8,7 @@ require_once("../include/config.php");
 // example setting up a stream configuration element
 $streamConfig =new com\wowza\entities\application\StreamConfig();
 $streamConfig->setStreamType("live");
+$streamConfig->setHttpRandomizeMediaName(false);
 $streamConfig->setLiveStreamPacketizer(array("sanjosestreamingpacketizer","cupertinostreamingpacketizer"));
 
 // example setting up a security configuration element

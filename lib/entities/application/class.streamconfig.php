@@ -6,7 +6,8 @@
 namespace com\wowza\entities\application;
 
 class StreamConfig extends \com\wowza\entities\Entity{
-	public $streamType = "live";
+    public $streamType = "live";
+    public $httpRandomizeMediaName = false;
 	public $liveStreamPacketizer = array();
 
 	public function __construct(){
