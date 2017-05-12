@@ -11,7 +11,7 @@ $sf = new com\wowza\Statistics();
 $wowzaApplication = new com\wowza\Application("vod");
 
 // get total server stats
-$server = new com\wowza\Server("http://wowza.edgetrac.net:8087/v2");
+$server = new com\wowza\Server("http://localhost:8087/v2");
 $response = $sf->getServerStatistics($server);
 
 // get stats historical for given application

@@ -42,13 +42,7 @@ class Statistics extends Wowza{
 				}
 				$props->$key = $this->$key;
 			}
-		}
-
-		if(count($this->_additional)>0){
-			foreach($this->_additional as $key=>$val){
-				$props->$key=$val;
-			}
-		}
+		} 
 		return $props;
 	}
 }
