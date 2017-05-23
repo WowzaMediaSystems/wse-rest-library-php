@@ -41,11 +41,18 @@ $modules->moduleList[] = $modules->getModuleItem("ModuleCoreSecurity", "ModuleCo
 
 // Create this application
 $wowzaApplication = new com\wowza\Application("live");
+
+$advanced = new com\wowza\entities\application\AdvancedSettings();
+$advanced->advancedSettings[] = $advanced->getAdvItem("test","val","String","true","true",null,"Common","/Root/Application");
+$response = $wowzaApplication->createAdvanced($advanced);
+
 // var_dump($wowzaApplication->getAll());
 // var_dump($wowzaApplication->get());
 
+// $transcoderConfig = new com\wowza\entities\application\TranscoderConfig();
+ 
 // $response = $wowzaApplication->create($streamConfig);
-// $response = $wowzaApplication->create($streamConfig, $securityConfig,$modules);
+// $response = $wowzaApplication->create($streamConfig, $securityConfig,$modules,null,$transcoderConfig);
 
 // Update the application
 // $response = $wowzaApplication->update($streamConfig);
@@ -53,4 +60,4 @@ $wowzaApplication = new com\wowza\Application("live");
 // Remove the application
 // $response = $wowzaApplication->remove();
 
-// var_dump($response);
+var_dump($response);
