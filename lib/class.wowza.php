@@ -74,13 +74,8 @@ class Wowza{
 				for($i=0; $i<count($entities); $i++){ 
 					$entity = $entities[$i];
 					if(is_object($entity) && method_exists($entity, "getEntityName")){
-						$name = $entity->getEntityName();
-						if(isset($entity->advancedSettings)){
-							$props->$name = $entity->advancedSettings;
-						}
-						else{
-							$props->$name = $entity;
-						} 
+						$name = $entity->getEntityName(); 
+						$props->$name = $entity;
 					}
 				}
 			}  

@@ -68,11 +68,13 @@ class Application extends Wowza{
 		return $this->sendRequest($this->preparePropertiesForRequest(),$entities, self::VERB_PUT);
 	}
 	
-	public function createAdvanced(entities\application\AdvancedSettings $advSettings){
+	public function createAdvanced(entities\application\AdvancedSettings $advSettings,entities\application\Modules $modules = null){
 		$entities = $this->getEntites(func_get_args(), $this->restURI);
 		$props = new \stdClass();
 		$props->restURI = $this->restURI."/adv";
-		return $this->sendRequest($props,$entities, self::VERB_PUT);
+		$props->advancedSettings = $advSettings->advancedSettings;
+		$props->modules = $modules->moduleList;
+		return $this->sendRequest($props,null, self::VERB_PUT);
 	}
 
 	public function remove(){

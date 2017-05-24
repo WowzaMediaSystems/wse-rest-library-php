@@ -43,8 +43,8 @@ $modules->moduleList[] = $modules->getModuleItem("ModuleCoreSecurity", "ModuleCo
 $wowzaApplication = new com\wowza\Application("live");
 
 $advanced = new com\wowza\entities\application\AdvancedSettings();
-$advanced->advancedSettings[] = $advanced->getAdvItem("test","val","String","true","true",null,"Common","/Root/Application");
-$response = $wowzaApplication->createAdvanced($advanced);
+$advanced->advancedSettings[] = $advanced->getAdvItem("test","val22","String","true","true",null,"Common","/Root/Application");
+$response = $wowzaApplication->createAdvanced($advanced, $modules);
 
 // var_dump($wowzaApplication->getAll());
 // var_dump($wowzaApplication->get());
