@@ -71,7 +71,6 @@ class Wowza{
 	protected function sendRequest($props, $entities, $verbType=self::VERB_POST, $queryParams=null){
 		if(isset($props->restURI) && !empty($props->restURI)){
 			if(count($entities)>0){
-				var_dump($entities);
 				for($i=0; $i<count($entities); $i++){ 
 					$entity = $entities[$i];
 					if(is_object($entity) && method_exists($entity, "getEntityName")){
