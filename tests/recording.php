@@ -5,7 +5,7 @@
 //
 require_once("../include/config.php");
 
-$sf = new com\wowza\Recording();
+$sf = new com\wowza\Recording("live");
 $response = $sf->split("myStream");
 
 // $recordName= "myStream";
