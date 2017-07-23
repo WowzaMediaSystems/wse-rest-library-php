@@ -127,6 +127,23 @@ class StreamFile extends Wowza{
 		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_PUT);
 	}
 
+	/**
+	 * Reset stream
+	 */
+	public function reset(){
+		/*
+		 * curl -X PUT --header 'Accept:application/json; charset=utf-8' --header 'Content-type:application/json; charset=utf-8'
+		 * "http://localhost:8087/v2/servers/_defaultServer_/vhosts/_defaultVHost_/applications/[YOUR-APP-NAME]/instances/_definst_/incomingstreams/[STREAM-FILE-NAME]/actions/resetStream"
+		 *
+		 *
+		 * "http:\/\/127.0.0.1:8087\/v2\/servers\/_defaultServer_\/vhosts\/_defaultVHost_\/applications\/live\/instances\/_definst_\/incomingstreams\/bolton_mass\/actions\/resetStream"
+		 */
+		$this->_skip["name"]=1;
+		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/vhosts/".$this->getVHostInstance()."/applications/".$this->_applicationName."/instances/";
+		$this->restURI .= $this->_applicationInstance."/incomingstreams/".$this->name.".stream/actions/resetStream";
+		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_PUT);
+	}
+
 	private function preparePropertiesForRequest(){
 		$classPropNames = get_class_vars(get_class($this));
 		$props = new \stdClass();
