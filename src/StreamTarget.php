@@ -32,7 +32,8 @@ class StreamTarget extends Wowza
         $host = null,
         $userName = null,
         $password = null,
-        $streamName = null
+        $streamName = null,
+        $application = null
     ) {
         $this->restURI = $this->restURI . "/" . $entryName;
         $this->sourceStreamName = (!is_null($sourceStreamName)) ? $sourceStreamName : $this->sourceStreamName;
@@ -42,6 +43,7 @@ class StreamTarget extends Wowza
         $this->userName = (!is_null($userName)) ? $userName : $this->userName;
         $this->password = (!is_null($password)) ? $password : $this->password;
         $this->streamName = (!is_null($streamName)) ? $streamName : $this->streamName;
+        $this->application = (!is_null($application)) ? $application : $this->application;
 
         $response = $this->sendRequest($this->preparePropertiesForRequest(self::class), []);
 
