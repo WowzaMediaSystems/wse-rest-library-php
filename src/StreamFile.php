@@ -72,13 +72,9 @@ class StreamFile extends Wowza
     private function addURL($advancedSettings)
     {
         $this->_skip["name"] = 1;
-        $this->_additional["version"] = "1430601267443";
-        $this->restURI = $this->restURI . "/adv";
-        if (is_array($advancedSettings)) {
-            $this->_additional["advancedSettings"] = $advancedSettings;
-        } else {
-            $this->_additional["advancedSettings"] = [$advancedSettings];
-        }
+        $this->restURI .= '/adv';
+        $this->addAdditionalParameter('version', '1430601267443')
+            ->addAdditionalParameter('advancedSettings', (array) $advancedSettings);
 
         $entities = $this->getEntites(func_get_args(), null);
 
