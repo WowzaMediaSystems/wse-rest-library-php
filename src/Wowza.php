@@ -16,7 +16,7 @@ class Wowza
     const VERB_PUT = 'PUT';
 
     protected $restURI = '';
-    protected $_skip = [];
+    private $_skip = [];
     private $_additional = [];
 
     private $settings;
@@ -136,6 +136,18 @@ class Wowza
 
         return $this;
     }
+    /**
+     * @param $key
+     * @param $value
+     *
+     * @return $this
+     */
+    public function addSkipParameter($key, $value)
+    {
+        $this->_skip[$key] = $value;
+
+        return $this;
+    }
 
     protected function preparePropertiesForRequest($class)
     {
@@ -147,7 +159,7 @@ class Wowza
                 if (preg_match("/^(\_)/", $key)) {
                     continue;
                 }
-                if (isset($this->_skip[$key])) {
+                if (array_key_exists($key, $this->_skip)) {
                     continue;
                 }
                 $props->$key = $this->$key;

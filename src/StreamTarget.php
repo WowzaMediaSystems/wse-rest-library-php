@@ -59,17 +59,15 @@ class StreamTarget extends Wowza
 
     private function setNoParams()
     {
-        $this->_skip["userName"] = true;
-        $this->_skip["password"] = true;
-        $this->_skip["group"] = true;
-        $this->_skip["sourceStreamName"] = true;
-        $this->_skip["entryName"] = true;
-        $this->_skip["profile"] = true;
-        $this->_skip["host"] = true;
-        $this->_skip["application"] = true;
-        $this->_skip["userName"] = true;
-        $this->_skip["password"] = true;
-        $this->_skip["streamName"] = true;
+        $this->addSkipParameter('userName', true) //todo: correct key name?
+            ->addSkipParameter('password', true)
+            ->addSkipParameter('group', true)
+            ->addSkipParameter('sourceStreamName', true)
+            ->addSkipParameter('entryName', true)
+            ->addSkipParameter('profile', true)
+            ->addSkipParameter('host', true)
+            ->addSkipParameter('application', true)
+            ->addSkipParameter('streamName', true);
     }
 
     public function remove($entryName)
