@@ -20,9 +20,7 @@ class StreamFile extends Wowza
     public function __construct(
         Settings $settings,
         $appName = null,
-        $streamFileName = null,
-        $serverInstance = "_defaultServer_",
-        $vhostInstance = "_defaultVHost_"
+        $streamFileName = null
     ) {
         parent::__construct($settings);
         $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/streamfiles";
