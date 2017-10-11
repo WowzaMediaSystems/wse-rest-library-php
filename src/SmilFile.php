@@ -30,7 +30,7 @@ class SmilFile extends Wowza
 
     public function get($fileName)
     {
-        $this->_skip["smilStreams"] = true;
+        $this->addSkipParameter('smilStreams', true);
         $this->restURI = $this->restURI . "/" . $fileName;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
@@ -38,15 +38,15 @@ class SmilFile extends Wowza
 
     public function getAll()
     {
-        $this->_skip["smilStreams"] = true;
+        $this->addSkipParameter('smilStreams', true);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     public function remove($fileName)
     {
-        $this->_skip["smilStreams"] = true;
-        $this->restURI = $this->restURI . "/" . $fileName;
+        $this->addSkipParameter('smilStreams', true);
+        $this->restURI = $this->restURI . '/' . $fileName;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
     }

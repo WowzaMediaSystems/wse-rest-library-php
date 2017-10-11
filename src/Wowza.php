@@ -10,14 +10,14 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Wowza
 {
-    const VERB_POST = "POST";
-    const VERB_GET = "GET";
-    const VERB_DELETE = "DELETE";
-    const VERB_PUT = "PUT";
+    const VERB_POST = 'POST';
+    const VERB_GET = 'GET';
+    const VERB_DELETE = 'DELETE';
+    const VERB_PUT = 'PUT';
 
-    protected $restURI = "";
-    protected $_skip = [];
-    protected $_additional = [];
+    protected $restURI = '';
+    private $_skip = [];
+    private $_additional = [];
 
     private $settings;
 
@@ -79,10 +79,11 @@ class Wowza
     protected function sendRequest($props, $entities, $verbType = self::VERB_POST, $queryParams = null)
     {
         if (isset($props->restURI) && !empty($props->restURI)) {
-            if (count($entities) > 0) {
-                for ($i = 0; $i < count($entities); $i++) {
+            $entityCount = count($entities);
+            if ($entityCount > 0) {
+                for ($i = 0; $i < $entityCount; $i++) {
                     $entity = $entities[$i];
-                    if (is_object($entity) && method_exists($entity, "getEntityName")) {
+                    if (is_object($entity) && method_exists($entity, 'getEntityName')) {
                         $name = $entity->getEntityName();
                         $props->$name = $entity;
                     }
@@ -91,8 +92,8 @@ class Wowza
             $json = json_encode($props);
 
             $restURL = $props->restURI;
-            if (!is_null($queryParams)) {
-                $restURL .= "?" . $queryParams;
+            if (null !== $queryParams) {
+                $restURL .= '?' . $queryParams;
             }
             $this->debug("JSON REQUEST to {$restURL} with verb {$verbType}: " . $json);
 
@@ -123,6 +124,31 @@ class Wowza
         return false;
     }
 
+    /**
+     * @param $key
+     * @param $value
+     *
+     * @return $this
+     */
+    public function addAdditionalParameter($key, $value)
+    {
+        $this->_additional[$key] = $value;
+
+        return $this;
+    }
+    /**
+     * @param $key
+     * @param $value
+     *
+     * @return $this
+     */
+    public function addSkipParameter($key, $value)
+    {
+        $this->_skip[$key] = $value;
+
+        return $this;
+    }
+
     protected function preparePropertiesForRequest($class)
     {
         $classPropNames = get_class_vars($class);
@@ -133,7 +159,7 @@ class Wowza
                 if (preg_match("/^(\_)/", $key)) {
                     continue;
                 }
-                if (isset($this->_skip[$key])) {
+                if (array_key_exists($key, $this->_skip)) {
                     continue;
                 }
                 $props->$key = $this->$key;

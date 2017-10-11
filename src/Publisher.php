@@ -29,8 +29,8 @@ class Publisher extends Wowza
 
     public function getAll()
     {
-        $this->_skip["name"] = true;
-        $this->_skip["password"] = true;
+        $this->addSkipParameter('name', true)
+            ->addSkipParameter('password', true);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }

@@ -32,25 +32,28 @@ class Application extends Wowza
         $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$name}";
     }
 
+    private function setParameters()
+    {
+        $this->addSkipParameter('name', true)
+            ->addSkipParameter('clientStreamReadAccess', true)
+            ->addSkipParameter('appType', true)
+            ->addSkipParameter('clientStreamWriteAccess', true)
+            ->addSkipParameter('description', true);
+
+    }
+
     public function get()
     {
-        $this->_skip["name"] = true;
-        $this->_skip["clientStreamReadAccess"] = true;
-        $this->_skip["appType"] = true;
-        $this->_skip["clientStreamWriteAccess"] = true;
-        $this->_skip["description"] = true;
+        $this->setParameters();
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     public function getAll()
     {
-        $this->_skip["name"] = true;
-        $this->_skip["clientStreamReadAccess"] = true;
-        $this->_skip["appType"] = true;
-        $this->_skip["clientStreamWriteAccess"] = true;
-        $this->_skip["description"] = true;
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications";
+        $this->setParameters();
+
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . '/applications';
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
