@@ -4,7 +4,6 @@
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 use com\wowza\DvrClipExtraction;
-require_once("../include/config.php");
 
 // Create settings
 $settings = new \com\wowza\entities\application\helpers\Settings();
