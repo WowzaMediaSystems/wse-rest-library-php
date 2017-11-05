@@ -46,6 +46,17 @@ class Application extends Wowza
     {
         $this->setParameters();
 
+        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}";
+
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
+    }
+
+    public function getAdvanced()
+    {
+        $this->setParameters();
+
+        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}/adv";
+
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
@@ -53,7 +64,7 @@ class Application extends Wowza
     {
         $this->setParameters();
 
-        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . '/applications';
+        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications";
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
