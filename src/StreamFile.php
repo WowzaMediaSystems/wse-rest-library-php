@@ -20,9 +20,7 @@ class StreamFile extends Wowza
     public function __construct(
         Settings $settings,
         $appName = null,
-        $streamFileName = null,
-        $serverInstance = "_defaultServer_",
-        $vhostInstance = "_defaultVHost_"
+        $streamFileName = null
     ) {
         parent::__construct($settings);
         $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/streamfiles";
@@ -38,7 +36,7 @@ class StreamFile extends Wowza
 
     public function get()
     {
-        $this->_skip["name"] = true;
+        $this->addSkipParameter('name', true);
         $this->restURI .= "/" . $this->name;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
@@ -46,7 +44,7 @@ class StreamFile extends Wowza
 
     public function getAll()
     {
-        $this->_skip["name"] = true;
+        $this->addSkipParameter('name', true);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
@@ -71,14 +69,10 @@ class StreamFile extends Wowza
 
     private function addURL($advancedSettings)
     {
-        $this->_skip["name"] = 1;
-        $this->_additional["version"] = "1430601267443";
-        $this->restURI = $this->restURI . "/adv";
-        if (is_array($advancedSettings)) {
-            $this->_additional["advancedSettings"] = $advancedSettings;
-        } else {
-            $this->_additional["advancedSettings"] = [$advancedSettings];
-        }
+        $this->addSkipParameter('name', 1);
+        $this->restURI .= '/adv';
+        $this->addAdditionalParameter('version', '1430601267443')
+            ->addAdditionalParameter('advancedSettings', (array) $advancedSettings);
 
         $entities = $this->getEntites(func_get_args(), null);
 
@@ -115,7 +109,7 @@ class StreamFile extends Wowza
 
     public function remove()
     {
-        $this->_skip["name"] = 1;
+        $this->addSkipParameter('name', 1);
         $this->restURI = $this->restURI . "/" . $this->name;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
@@ -123,7 +117,7 @@ class StreamFile extends Wowza
 
     public function connect($subFolder = "")
     {
-        $this->_skip["name"] = 1;
+        $this->addSkipParameter('name', 1);
 // 		$this->_additional["connectAppName"]=$this->_applicationName;
 // 		$this->_additional["appInstance"]=$this->_applicationInstance;
 // 		$this->_additional["mediaCasterType"]=$this->_mediaCasterType;
@@ -143,7 +137,7 @@ class StreamFile extends Wowza
          *
          * "http:\/\/127.0.0.1:8087\/v2\/servers\/_defaultServer_\/vhosts\/_defaultVHost_\/applications\/live\/instances\/_definst_\/incomingstreams\/bolton_mass\/actions\/disconnectStream"
          */
-        $this->_skip["name"] = 1;
+        $this->addSkipParameter('name', 1);
 // 		$this->_additional["connectAppName"]=$this->_applicationName;
 // 		$this->_additional["appInstance"]=$this->_applicationInstance;
 // 		$this->_additional["mediaCasterType"]=$this->_mediaCasterType;
@@ -155,19 +149,20 @@ class StreamFile extends Wowza
     }
     
     /**
-	 * Reset stream
-	 */
-	public function reset(){
-		/*
-		 * curl -X PUT --header 'Accept:application/json; charset=utf-8' --header 'Content-type:application/json; charset=utf-8'
-		 * "http://localhost:8087/v2/servers/_defaultServer_/vhosts/_defaultVHost_/applications/[YOUR-APP-NAME]/instances/_definst_/incomingstreams/[STREAM-FILE-NAME]/actions/resetStream"
-		 *
-		 *
-		 * "http:\/\/127.0.0.1:8087\/v2\/servers\/_defaultServer_\/vhosts\/_defaultVHost_\/applications\/live\/instances\/_definst_\/incomingstreams\/bolton_mass\/actions\/resetStream"
-		 */
-		$this->_skip["name"]=1;
-		$this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/vhosts/".$this->getVHostInstance()."/applications/".$this->_applicationName."/instances/";
-		$this->restURI .= $this->_applicationInstance."/incomingstreams/".$this->name.".stream/actions/resetStream";
-		return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_PUT);
-	}
+     * Reset stream
+     */
+    public function reset(){
+        /*
+         * curl -X PUT --header 'Accept:application/json; charset=utf-8' --header 'Content-type:application/json; charset=utf-8'
+         * "http://localhost:8087/v2/servers/_defaultServer_/vhosts/_defaultVHost_/applications/[YOUR-APP-NAME]/instances/_definst_/incomingstreams/[STREAM-FILE-NAME]/actions/resetStream"
+         *
+         *
+         * "http:\/\/127.0.0.1:8087\/v2\/servers\/_defaultServer_\/vhosts\/_defaultVHost_\/applications\/live\/instances\/_definst_\/incomingstreams\/bolton_mass\/actions\/resetStream"
+         */
+        $this->addSkipParameter('name', 1);
+        $this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/vhosts/".$this->getVHostInstance()."/applications/".$this->_applicationName."/instances/";
+        $this->restURI .= $this->_applicationInstance."/incomingstreams/".$this->name.".stream/actions/resetStream";
+
+        return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_PUT);
+    }
 }

@@ -32,9 +32,9 @@ class User extends Wowza
 
     public function getAll()
     {
-        $this->_skip["userName"] = true;
-        $this->_skip["password"] = true;
-        $this->_skip["group"] = true;
+        $this->addSkipParameter('userName', true) //todo: is this key correct??
+            ->addSkipParameter('password', true)
+            ->addSkipParameter('group', true);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }

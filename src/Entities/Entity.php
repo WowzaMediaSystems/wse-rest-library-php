@@ -4,7 +4,7 @@
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 
-namespace Com\Wowza\entities;
+namespace Com\Wowza\Entities;
 
 abstract class Entity
 {
@@ -33,7 +33,8 @@ abstract class Entity
 
     public function getEntityName()
     {
-        $className = array_pop(explode("\\", get_class($this)));
+        $className = explode("\\", get_class($this));
+        $className = array_pop($className);
 
         return lcfirst($className);
     }

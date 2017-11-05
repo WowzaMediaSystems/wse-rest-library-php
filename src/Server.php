@@ -28,9 +28,10 @@ class Server extends Wowza
     public function createUser($name, $password, $groups = [])
     {
         $this->restURI .= "/users/{$name}";
-        $this->_additional["name"] = $name;
-        $this->_additional["password"] = $password;
-        $this->_additional["groups"] = $groups;
+        $this->addAdditionalParameter('name', $name)
+            ->addAdditionalParameter('password', $password)
+            ->addAdditionalParameter('groups', $groups);
+
         $entities = $this->getEntites([], $this->restURI);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), []);

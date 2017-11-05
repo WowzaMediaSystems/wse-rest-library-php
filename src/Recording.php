@@ -113,26 +113,25 @@ class Recording extends Wowza
 
     private function setNoParams()
     {
-        $this->_skip["recordName"] = true;
-        $this->_skip["instanceName"] = true;
-        $this->_skip["recorderState"] = true;
-        $this->_skip["defaultRecorder"] = true;
-        $this->_skip["segmentationType"] = true;
-        $this->_skip["outputPath"] = true;
-        $this->_skip["baseFile"] = true;
-        $this->_skip["fileFormat"] = true;
-        $this->_skip["fileVersionDelegateName"] = true;
-        $this->_skip["fileTemplate"] = true;
-        $this->_skip["segmentDuration"] = true;
-        $this->_skip["segmentSize"] = true;
-        $this->_skip["segmentSchedule"] = true;
-        $this->_skip["recordData"] = true;
-        $this->_skip["startOnKeyFrame"] = true;
-        $this->_skip["splitOnTcDiscontinuity"] = true;
-        $this->_skip["option"] = true;
-        $this->_skip["moveFirstVideoFrameToZero"] = true;
-        $this->_skip["currentSize"] = true;
-        $this->_skip["currentDuration"] = true;
-        $this->_skip["recordingStartTime"] = true;
+        $this->addSkipParameter('recordName', true)
+            ->addSkipParameter('instanceName', true)
+            ->addSkipParameter('recorderState', true)
+            ->addSkipParameter('defaultRecorder', true)
+            ->addSkipParameter('segmentationType', true)
+            ->addSkipParameter('outputPath', true)
+            ->addSkipParameter('baseFile', true)
+            ->addSkipParameter('fileFormat', true)
+            ->addSkipParameter('fileVersionDelegateName', true)
+            ->addSkipParameter('fileTemplate', true)
+            ->addSkipParameter('segmentDuration', true)
+            ->addSkipParameter('segmentSize', true)
+            ->addSkipParameter('segmentSchedule', true)
+            ->addSkipParameter('startOnKeyFrame', true)
+            ->addSkipParameter('splitOnTcDiscontinuity', true)
+            ->addSkipParameter('option', true)
+            ->addSkipParameter('moveFirstVideoFrameToZero', true)
+            ->addSkipParameter('currentSize', true)
+            ->addSkipParameter('currentDuration', true)
+            ->addSkipParameter('recordingStartTime', true);
     }
 }
