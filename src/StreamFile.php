@@ -163,6 +163,6 @@ class StreamFile extends Wowza
         $this->restURI = $this->getHost()."/servers/".$this->getServerInstance()."/vhosts/".$this->getVHostInstance()."/applications/".$this->_applicationName."/instances/";
         $this->restURI .= $this->_applicationInstance."/incomingstreams/".$this->name.".stream/actions/resetStream";
 
-        return $this->sendRequest($this->preparePropertiesForRequest(),array(), self::VERB_PUT);
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 }
