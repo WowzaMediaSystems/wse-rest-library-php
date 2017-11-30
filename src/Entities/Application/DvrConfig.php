@@ -10,16 +10,16 @@ use Com\Wowza\Entities\Entity;
 class DvrConfig extends Entity
 {
     public $licenseType = "Monthly";
-    public $inUse = [];
-    public $dvrEnable = [];
-    public $windowDuration = [];
+    public $inUse = false;
+    public $dvrEnable = false;
+    public $windowDuration = 0;
     public $storageDir = "\$\{com\.wowza\.wms\.context\.VHostConfigHome\}/dvr";
     public $archiveStrategy = "append";
-    public $dvrOnlyStreaming = [];
-    public $startRecordingOnStartup = [];
+    public $dvrOnlyStreaming = false;
+    public $startRecordingOnStartup = false;
     public $dvrEncryptionSharedSecret = "";
-    public $dvrMediaCacheEnabled = [];
-    public $httpRandomizeMediaName = [];
+    public $dvrMediaCacheEnabled = false;
+    public $httpRandomizeMediaName = false;
 
     public function setURI($baseURI)
     {
