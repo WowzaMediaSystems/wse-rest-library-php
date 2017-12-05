@@ -42,4 +42,18 @@ class Statistics extends Wowza
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
+
+    /**
+     * Get current host hardware stats
+     *
+     * @param Com\Wowza\Server $server Server instance
+     * @return mixed[]
+     */
+    public function getServerStatisticsCurrent(Server $server)
+    {
+        $restURI = explode('/servers/', $server->getRestURI());
+        $this->restURI = $restURI[0] . "/machine/monitoring/current";
+
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
+    }
 }
