@@ -9,29 +9,9 @@ Wowza Streaming Engine™ 4.0.0 or later is required.
 
 1. Please [install composer](https://getcomposer.org/doc/00-intro.md)
 
-2. Create a composer.json file in the root directory of your project or as appropriate.
+2. `$ composer require "wowza/wse-rest-library-php:dev-master"`
 
-composer.json example contents -
-
-```
-{
-  "repositories": [
-    {
-      "type":"vcs",
-      "url": "https://github.com/WowzaMediaSystems/wse-rest-library-php.git"
-    }
-  ],
-  "require": {
-    "wowza/wse-rest-library-php": "dev-master"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
-}
-```
-
-## Installing wse-rest-library-php
-
-`composer install` is the command you would run after composer is installed. This command must be ran in the same directory that the composer.json file is stored. Please see the composer site for issues with their product. Wowza Media Systems, LLC is not responsible for nor does it provide support for composer.
+Wowza Media Systems, LLC is not responsible for nor does it provide support for composer.
 
 ## Example Configuration
 
@@ -77,7 +57,7 @@ var_dump($response);
 
 ## Packagist
 
-Work is being done to make this repository available through packagist.
+A development branch is available through Packagist at [the packagist website.](https://packagist.org/packages/wowza/wse-rest-library-php#dev-master)
 
 ## Usage
 To learn the basics of how to query the Wowza Streaming Engine REST service using PHP, see [How to use PHP to make requests to the Wowza Streaming Engine REST API](https://www.wowza.com/forums/content.php?918-How-to-use-PHP-to-make-requests-to-the-Wowza-Streaming-Engine-REST-API). For examples on how to leverage this PHP library, see [REST API Query Examples (PHP)](https://www.wowza.com/forums/content.php?889-wowza-streaming-engine-rest-api-query-examples-%28php%29).
