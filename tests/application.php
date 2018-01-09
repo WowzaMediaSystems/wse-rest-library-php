@@ -3,7 +3,6 @@
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 <?php
-require_once("../include/config.php");
 
 // example setting up a stream configuration element
 $streamConfig =new com\wowza\entities\application\StreamConfig();
