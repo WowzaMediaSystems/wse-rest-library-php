@@ -31,10 +31,10 @@ class Recording extends Wowza
     protected $currentDuration = "0";
     protected $recordingStartTime = "";
 
-    public function __construct(Settings $settings)
+    public function __construct(Settings $settings, $appName = "live", $appInstance = "_definst_")
     {
         parent::__construct($settings);
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/_defaultVHost_/applications/live/instances/_definst_/streamrecorders";
+        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$appName}/instances/{$appInstance}/streamrecorders";
     }
 
     public function create(
@@ -63,9 +63,9 @@ class Recording extends Wowza
 
         $this->recordName = $recordName;
         $this->instanceName = $instanceName;
-        $this->recordName = $recorderState;
-        $this->recordName = $defaultRecorder;
-        $this->recordName = $segmentationType;
+        $this->recorderState = $recorderState;
+        $this->defaultRecorder = $defaultRecorder;
+        $this->segmentationType = $segmentationType;
         $this->outputPath = $outputPath;
         $this->baseFile = $baseFile;
         $this->fileFormat = $fileFormat;
@@ -95,7 +95,23 @@ class Recording extends Wowza
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
-    public function stop($recordName)
+    public function getRecorder($recordName)
+    {
+    	$this->restURI = $this->restURI . "/" . $recordName;
+        $this->setNoParams();
+
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
+    }
+
+    public function getDefaultParams($recordName)
+    {
+    	$this->restURI = $this->restURI . "/" . $recordName . "/default";
+        $this->setNoParams();
+
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
+    }
+
+	public function stop($recordName)
     {
         $this->restURI = $this->restURI . "/" . $recordName . "/actions/stopRecording";
         $this->setNoParams();
