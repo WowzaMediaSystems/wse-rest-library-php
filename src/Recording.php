@@ -9,7 +9,7 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Recording extends Wowza
 {
-    protected $recordName = "myStream";
+    protected $recorderName = "myStream";
     protected $instanceName = "_definst_";
     protected $recorderState = "Waiting for stream";
     protected $defaultRecorder = "true";
@@ -30,6 +30,7 @@ class Recording extends Wowza
     protected $currentSize = "0";
     protected $currentDuration = "0";
     protected $recordingStartTime = "";
+    
 
     public function __construct(Settings $settings, $appName = "live", $appInstance = "_definst_")
     {
@@ -38,7 +39,7 @@ class Recording extends Wowza
     }
 
     public function create(
-        $recordName,
+        $recorderName,
         $instanceName,
         $recorderState,
         $defaultRecorder,
@@ -61,7 +62,7 @@ class Recording extends Wowza
         $recordingStartTime
     ) {
 
-        $this->recordName = $recordName;
+        $this->recorderName = $recorderName;
         $this->instanceName = $instanceName;
         $this->recorderState = $recorderState;
         $this->defaultRecorder = $defaultRecorder;
@@ -95,33 +96,33 @@ class Recording extends Wowza
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
-    public function getRecorder($recordName)
+    public function getRecorder($recorderName)
     {
-    	$this->restURI = $this->restURI . "/" . $recordName;
+    	$this->restURI = $this->restURI . "/" . $recorderName;
         $this->setNoParams();
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
-    public function getDefaultParams($recordName)
+    public function getDefaultParams($recorderName)
     {
-    	$this->restURI = $this->restURI . "/" . $recordName . "/default";
+    	$this->restURI = $this->restURI . "/" . $recorderName . "/default";
         $this->setNoParams();
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
-	public function stop($recordName)
+	public function stop($recordererName)
     {
-        $this->restURI = $this->restURI . "/" . $recordName . "/actions/stopRecording";
+        $this->restURI = $this->restURI . "/" . $recorderName . "/actions/stopRecording";
         $this->setNoParams();
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
-    public function split($recordName)
+    public function split($recorderName)
     {
-        $this->restURI = $this->restURI . "/" . $recordName . "/actions/splitRecording";
+        $this->restURI = $this->restURI . "/" . $recorderName . "/actions/splitRecording";
         $this->setNoParams();
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
