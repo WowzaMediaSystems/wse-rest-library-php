@@ -18,11 +18,12 @@ class StreamTarget extends Wowza
     protected $userName = null;
     protected $password = null;
     protected $streamName = "myStream";
+    protected $appName;
 
     public function __construct(Settings $settings, $appName)
     {
         parent::__construct($settings);
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/" . $appName . "/pushpublish/mapentries";
+        $this->appName = $appName;
     }
 
     public function create(
@@ -34,8 +35,9 @@ class StreamTarget extends Wowza
         $password = null,
         $streamName = null,
         $application = null
-    ) {
-        $this->restURI = $this->restURI . "/" . $entryName;
+    )
+    {
+        $this->restURI = $this->getRestURI() . "/" . $entryName;
         $this->sourceStreamName = (!is_null($sourceStreamName)) ? $sourceStreamName : $this->sourceStreamName;
         $this->entryName = (!is_null($entryName)) ? $entryName : $this->entryName;
         $this->profile = (!is_null($profile)) ? $profile : $this->profile;
@@ -53,14 +55,14 @@ class StreamTarget extends Wowza
     public function getAll()
     {
         $this->setNoParams();
-
+        $this->restURI = $this->getRestURI();
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     private function setNoParams()
     {
-        $this->addSkipParameter('userName', true) //todo: correct key name?
-            ->addSkipParameter('password', true)
+        $this->addSkipParameter('userName', true)//todo: correct key name?
+        ->addSkipParameter('password', true)
             ->addSkipParameter('group', true)
             ->addSkipParameter('sourceStreamName', true)
             ->addSkipParameter('entryName', true)
@@ -73,8 +75,13 @@ class StreamTarget extends Wowza
     public function remove($entryName)
     {
         $this->setNoParams();
-        $this->restURI = $this->restURI . "/" . $entryName;
+        $this->restURI = $this->getRestURI() . "/" . $entryName;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
+    }
+
+    protected function getRestURI()
+    {
+        return $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/" . $this->appName . "/pushpublish/mapentries";
     }
 }
