@@ -55,7 +55,7 @@ class StreamTarget extends Wowza
     public function getAll()
     {
         $this->setNoParams();
-
+        $this->restURI = $this->getRestURI();
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
