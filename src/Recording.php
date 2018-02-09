@@ -112,7 +112,7 @@ class Recording extends Wowza
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
-	public function stop($recordererName)
+	public function stop($recorderName)
     {
         $this->restURI = $this->restURI . "/" . $recorderName . "/actions/stopRecording";
         $this->setNoParams();
