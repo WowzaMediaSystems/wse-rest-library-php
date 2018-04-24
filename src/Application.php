@@ -46,6 +46,17 @@ class Application extends Wowza
     {
         $this->setParameters();
 
+        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}";
+
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
+    }
+
+    public function getAdvanced()
+    {
+        $this->setParameters();
+
+        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}/adv";
+
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
@@ -53,7 +64,7 @@ class Application extends Wowza
     {
         $this->setParameters();
 
-        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . '/applications';
+        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications";
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
@@ -66,6 +77,8 @@ class Application extends Wowza
         Entities\Application\TranscoderConfig $transConfig = null,
         Entities\Application\DrmConfig $drmConfig = null
     ) {
+        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}";
+
         $entities = $this->getEntites(func_get_args(), $this->restURI);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), $entities);
@@ -79,10 +92,27 @@ class Application extends Wowza
         Entities\Application\TranscoderConfig $transConfig = null,
         Entities\Application\DrmConfig $drmConfig = null
     ) {
+        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}";
+
         $entities = $this->getEntites(func_get_args(), $this->restURI);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), $entities, self::VERB_PUT);
     }
+
+    public function updateAdvanced(
+		Entities\Application\AdvancedSettings $advancedSettings = null,
+		Entities\Application\Modules $modules = null
+	) {
+		$this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}";
+
+		$entities = $this->getEntites(null, $this->restURI);
+		$props = new \stdClass();
+		$props->advancedSettings = $advancedSettings->advancedSettings;
+		$props->modules = $modules->moduleList;
+		$props->restURI = $this->restURI . "/adv";
+
+		return $this->sendRequest($props, $entities, self::VERB_PUT);
+	}
 
     public function remove()
     {
