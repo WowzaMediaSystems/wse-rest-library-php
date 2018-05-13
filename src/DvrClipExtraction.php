@@ -42,9 +42,9 @@ class DvrClipExtraction extends Wowza
      * dvrConverterEndTime=[unix-timestamp]
      * dvrConverterOutputFilename=[outputfilename]
      *
-     * @param $startTime is a unix timestamp
-     * @param $endTime is a unix timestamp
-     * @param $outputFileName is a string
+     * @param $startTime
+     * @param $endTime
+     * @param $outputFileName
      */
     public function convert($name, $startTime = null, $endTime = null, $outputFileName = null)
     {
