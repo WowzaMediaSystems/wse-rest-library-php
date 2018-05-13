@@ -31,7 +31,6 @@ class DvrClipExtraction extends Wowza
 
     public function convertGroup($nameArr)
     {
-        $this->setNoParams();
         $this->restURI = $this->restURI . '/actions/convert?dvrConverterStoreList=' . implode(',', $nameArr);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
@@ -49,7 +48,6 @@ class DvrClipExtraction extends Wowza
      */
     public function convert($name, $startTime = null, $endTime = null, $outputFileName = null)
     {
-        $this->setNoParams();
         $query = '';
         if (!is_null($startTime)) {
             $query .= 'dvrConverterStartTime=' . $startTime;
@@ -92,7 +90,6 @@ class DvrClipExtraction extends Wowza
      */
     public function convertByDurationWithStartTime($name, $startTime, $duration, $outputFileName = null)
     {
-        $this->setNoParams();
         $query = '';
         if (!is_null($startTime)) {
             $query .= 'dvrConverterStartTime=' . $startTime;
@@ -117,7 +114,6 @@ class DvrClipExtraction extends Wowza
 
     public function convertByDurationWithEndTimeTime($name, $endTime, $duration, $outputFileName = null)
     {
-        $this->setNoParams();
         $query = '';
         if (!is_null($endTime)) {
             $query .= 'dvrConverterEndTime=' . $endTime;
@@ -142,18 +138,11 @@ class DvrClipExtraction extends Wowza
 
     public function getAll()
     {
-        $this->setNoParams();
-
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
-
-    private function setNoParams()
-    {
-    }
-
+    
     public function remove($fileName)
     {
-        $this->setNoParams();
         $this->restURI = $this->restURI . '/' . $fileName;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
