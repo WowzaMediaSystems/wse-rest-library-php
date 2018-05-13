@@ -46,7 +46,7 @@ class Statistics extends Wowza
     /**
      * Get current host hardware stats
      *
-     * @param Com\Wowza\Server $server Server instance
+     * @param \Com\Wowza\Server $server Server instance
      *
      * @return mixed[]
      */
