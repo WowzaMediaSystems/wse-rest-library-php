@@ -3,7 +3,9 @@ Wowza Streaming Engine [media server software](https://www.wowza.com/products/st
 
 ## Prerequisites
 Wowza Streaming Engine™ 4.0.0 or later is required.
+
 PHP 5.5.0 or later is required.
+
 [composer](https://getcomposer.org/) is highly recommended.
 
 ## Composer Setup
