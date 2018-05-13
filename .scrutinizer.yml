@@ -16,7 +16,6 @@ build:
                         command: phpcs-run
                         use_website_config: true
                     - php-scrutinizer-run
-
 checks:
     php:
         code_rating: true
