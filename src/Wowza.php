@@ -45,7 +45,7 @@ class Wowza
     {
         $entities = [];
         $argsCount = count($args);
-        
+
         for ($i = 0; $i < $argsCount; $i++) {
             $arg = $args[$i];
             if (!is_null($arg)) {
