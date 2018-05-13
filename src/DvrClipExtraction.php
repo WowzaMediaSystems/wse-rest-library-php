@@ -140,7 +140,7 @@ class DvrClipExtraction extends Wowza
     {
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
-    
+
     public function remove($fileName)
     {
         $this->restURI = $this->restURI . '/' . $fileName;
