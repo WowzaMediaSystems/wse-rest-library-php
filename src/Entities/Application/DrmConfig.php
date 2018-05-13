@@ -9,25 +9,25 @@ use Com\Wowza\Entities\Entity;
 
 class DrmConfig extends Entity
 {
-    public $licenseType = "Monthly";
+    public $licenseType = 'Monthly';
     public $inUse = false;
     public $cupertinoEncryptionAPIBased = [];
-    public $ezDRMUsername = "";
-    public $ezDRMPassword = "";
-    public $buyDRMUserKey = "";
+    public $ezDRMUsername = '';
+    public $ezDRMPassword = '';
+    public $buyDRMUserKey = '';
     public $buyDRMProtectSmoothStreaming = false;
     public $buyDRMProtectCupertinoStreaming = false;
     public $buyDRMProtectMpegDashStreaming = false;
     public $verimatrixProtectCupertinoStreaming = false;
-    public $verimatrixCupertinoKeyServerIpAddress = "";
+    public $verimatrixCupertinoKeyServerIpAddress = '';
     public $verimatrixCupertinoKeyServerPort = 0;
     public $verimatrixCupertinoVODPerSessionKeys = false;
     public $verimatrixProtectSmoothStreaming = false;
-    public $verimatrixSmoothKeyServerIpAddress = "";
+    public $verimatrixSmoothKeyServerIpAddress = '';
     public $verimatrixSmoothKeyServerPort = 0;
 
     public function setURI($baseURI)
     {
-        $this->restURI = $baseURI . "/drm";
+        $this->restURI = $baseURI . '/drm';
     }
 }

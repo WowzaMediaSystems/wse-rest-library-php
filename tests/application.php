@@ -6,42 +6,42 @@
 
 // example setting up a stream configuration element
 $streamConfig =new com\wowza\entities\application\StreamConfig();
-$streamConfig->setStreamType("live");
-$streamConfig->setLiveStreamPacketizer(array("sanjosestreamingpacketizer","cupertinostreamingpacketizer"));
+$streamConfig->setStreamType('live');
+$streamConfig->setLiveStreamPacketizer(['sanjosestreamingpacketizer', 'cupertinostreamingpacketizer']);
 
 // example setting up a security configuration element
 $securityConfig = new com\wowza\entities\application\SecurityConfig();
-$securityConfig->secureTokenVersion = "0";
-$securityConfig->clientStreamWriteAccess = "*";
-$securityConfig->publishRequirePassword = "true";
-$securityConfig->publishPasswordFile = "";
-$securityConfig->publishRTMPSecureURL = "";
-$securityConfig->publishIPBlackList = "";
-$securityConfig->publishIPWhiteList = "";
-$securityConfig->publishBlockDuplicateStreamNames = "false";
-$securityConfig->publishValidEncoders = "";
-$securityConfig->publishAuthenticationMethod = "digest";
-$securityConfig->playMaximumConnections = "0";
-$securityConfig->playRequireSecureConnection = "false";
-$securityConfig->secureTokenSharedSecret = "";
-$securityConfig->secureTokenUseTEAForRTMP = "false";
-$securityConfig->secureTokenIncludeClientIPInHash = "false";
-$securityConfig->secureTokenHashAlgorithm = "";
-$securityConfig->secureTokenQueryParametersPrefix = "";
-$securityConfig->secureTokenOriginSharedSecret = "";
-$securityConfig->playIPBlackList = "";
-$securityConfig->playIPWhiteList = "";
-$securityConfig->playAuthenticationMethod = "none";
+$securityConfig->secureTokenVersion = '0';
+$securityConfig->clientStreamWriteAccess = '*';
+$securityConfig->publishRequirePassword = 'true';
+$securityConfig->publishPasswordFile = '';
+$securityConfig->publishRTMPSecureURL = '';
+$securityConfig->publishIPBlackList = '';
+$securityConfig->publishIPWhiteList = '';
+$securityConfig->publishBlockDuplicateStreamNames = 'false';
+$securityConfig->publishValidEncoders = '';
+$securityConfig->publishAuthenticationMethod = 'digest';
+$securityConfig->playMaximumConnections = '0';
+$securityConfig->playRequireSecureConnection = 'false';
+$securityConfig->secureTokenSharedSecret = '';
+$securityConfig->secureTokenUseTEAForRTMP = 'false';
+$securityConfig->secureTokenIncludeClientIPInHash = 'false';
+$securityConfig->secureTokenHashAlgorithm = '';
+$securityConfig->secureTokenQueryParametersPrefix = '';
+$securityConfig->secureTokenOriginSharedSecret = '';
+$securityConfig->playIPBlackList = '';
+$securityConfig->playIPWhiteList = '';
+$securityConfig->playAuthenticationMethod = 'none';
 
 // example setting up module(s) configuration element
 $modules = new com\wowza\entities\application\Modules();
-$modules->moduleList[] = $modules->getModuleItem("ModuleCoreSecurity", "ModuleCoreSecurity", "com.wowza.wms.security.ModuleCoreSecurity");
+$modules->moduleList[] = $modules->getModuleItem('ModuleCoreSecurity', 'ModuleCoreSecurity', 'com.wowza.wms.security.ModuleCoreSecurity');
 
 // Create settings
 $settings = new \com\wowza\entities\application\helpers\Settings();
 
 // Create this application
-$wowzaApplication = new com\wowza\Application($settings, "live");
+$wowzaApplication = new com\wowza\Application($settings, 'live');
 // var_dump($wowzaApplication->getAll());
 // var_dump($wowzaApplication->get());
 

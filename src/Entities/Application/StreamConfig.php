@@ -9,19 +9,19 @@ use Com\Wowza\Entities\Entity;
 
 class StreamConfig extends Entity
 {
-    public $streamType = "live";
+    public $streamType = 'live';
     public $liveStreamPacketizer = [];
 
     public function __construct()
     {
-        $this->liveStreamPacketizer[] = "cupertinostreamingpacketizer";
-        $this->liveStreamPacketizer[] = "smoothstreamingpacketizer";
-        $this->liveStreamPacketizer[] = "sanjosestreamingpacketizer";
+        $this->liveStreamPacketizer[] = 'cupertinostreamingpacketizer';
+        $this->liveStreamPacketizer[] = 'smoothstreamingpacketizer';
+        $this->liveStreamPacketizer[] = 'sanjosestreamingpacketizer';
     }
 
     public function setURI($baseURI)
     {
-        $this->restURI = $baseURI . "/streamconfiguration";
+        $this->restURI = $baseURI . '/streamconfiguration';
     }
 
     /**

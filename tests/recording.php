@@ -8,7 +8,7 @@
 $settings = new \com\wowza\entities\application\helpers\Settings();
 
 $sf = new com\wowza\Recording($settings);
-$response = $sf->split("myStream");
+$response = $sf->split('myStream');
 
 // $recordName= "myStream";
 // $instanceName= "_definst_";

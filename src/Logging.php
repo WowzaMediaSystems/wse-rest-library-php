@@ -12,12 +12,12 @@ class Logging extends Wowza
     public function __construct(Settings $settings)
     {
         parent::__construct($settings);
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/logfiles";
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/logfiles';
     }
 
     public function getNewestFirst()
     {
-        $this->restURI = $this->restURI . "?order=newestFirst";
+        $this->restURI = $this->restURI . '?order=newestFirst';
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
@@ -31,7 +31,7 @@ class Logging extends Wowza
 
     public function search($str)
     {
-        $this->restURI = $this->restURI . "/wowzastreamingengine_access.log?search=" . $str;
+        $this->restURI = $this->restURI . '/wowzastreamingengine_access.log?search=' . $str;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }

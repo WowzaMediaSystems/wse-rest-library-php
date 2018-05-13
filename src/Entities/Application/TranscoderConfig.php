@@ -22,7 +22,6 @@ class TranscoderConfig extends Entity
 
     public function setURI($baseURI)
     {
-        $this->restURI = $baseURI . "/transcoder";
+        $this->restURI = $baseURI . '/transcoder';
     }
 }
-

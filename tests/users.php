@@ -4,7 +4,7 @@
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 
-$sf = new com\wowza\User("newuser3");
+$sf = new com\wowza\User('newuser3');
 $response = $sf->remove();
 // $response = $sf->getAll();
 // $response = $sf->create("newpass4", array("admin"));

@@ -8,8 +8,8 @@ namespace Com\Wowza\Entities\Application\Helpers;
 
 class ModuleItem
 {
-    public $order = "0";
-    public $name = "";
-    public $description = "";
-    public $class = "";
+    public $order = '0';
+    public $name = '';
+    public $description = '';
+    public $class = '';
 }

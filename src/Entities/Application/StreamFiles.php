@@ -9,8 +9,8 @@ use Com\Wowza\Entities\Entity;
 
 class StreamFiles extends Entity
 {
-    public $id = "";
-    public $href = "";
+    public $id = '';
+    public $href = '';
 
     public function setURI($baseURI)
     {
