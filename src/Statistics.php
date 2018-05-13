@@ -48,7 +48,7 @@ class Statistics extends Wowza
      *
      * @param \Com\Wowza\Server $server Server instance
      *
-     * @return mixed[]
+     * @return false|mixed[]
      */
     public function getServerStatisticsCurrent(Server $server)
     {
