@@ -44,7 +44,9 @@ class Wowza
     protected function getEntites($args, $baseURI)
     {
         $entities = [];
-        for ($i = 0; $i < count($args); $i++) {
+        $argsCount = count($args);
+        
+        for ($i = 0; $i < $argsCount; $i++) {
             $arg = $args[$i];
             if (!is_null($arg)) {
                 if (is_null($arg->restURI)) {
