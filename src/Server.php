@@ -20,7 +20,7 @@ class Server extends Wowza
     public function getUsers()
     {
         $this->restURI .= '/users';
-        
+
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
