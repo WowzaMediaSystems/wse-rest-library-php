@@ -74,8 +74,6 @@ class StreamFile extends Wowza
         $this->addAdditionalParameter('version', '1430601267443')
             ->addAdditionalParameter('advancedSettings', (array) $advancedSettings);
 
-        $entities = $this->getEntites(func_get_args(), null);
-
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
