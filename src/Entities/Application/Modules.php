@@ -14,11 +14,11 @@ class Modules extends Entity
 
     public function __construct()
     {
-        $this->moduleList[] = $this->getModuleItem("base", "Base", "com.wowza.wms.module.ModuleCore");
-        $this->moduleList[] = $this->getModuleItem("logging", "Client Logging",
-            "com.wowza.wms.module.ModuleClientLogging");
-        $this->moduleList[] = $this->getModuleItem("flvplayback", "FLVPlayback",
-            "com.wowza.wms.module.ModuleFLVPlayback");
+        $this->moduleList[] = $this->getModuleItem('base', 'Base', 'com.wowza.wms.module.ModuleCore');
+        $this->moduleList[] = $this->getModuleItem('logging', 'Client Logging',
+            'com.wowza.wms.module.ModuleClientLogging');
+        $this->moduleList[] = $this->getModuleItem('flvplayback', 'FLVPlayback',
+            'com.wowza.wms.module.ModuleFLVPlayback');
     }
 
     public function getModuleItem($name, $description, $class, $order = null)
@@ -38,6 +38,6 @@ class Modules extends Entity
 
     public function setURI($baseURI)
     {
-        $this->restURI = $baseURI . "/streamconfiguration";
+        $this->restURI = $baseURI . '/streamconfiguration';
     }
 }

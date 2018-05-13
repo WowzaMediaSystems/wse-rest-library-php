@@ -12,32 +12,32 @@ abstract class Entity
 
     public function __call($name, $arguments)
     {
-        if (preg_match("/^(set)/", $name)) {
-            $name = preg_replace("/^(set)/", "", $name);
+        if (preg_match('/^(set)/', $name)) {
+            $name = preg_replace('/^(set)/', '', $name);
             $name = lcfirst($name);
             if (isset($this->$name)) {
                 $this->$name = $arguments[0];
             }
 
             return $this->$name;
-        } else if (preg_match("/^(get)/", $name)) {
-            $name = preg_replace("/^(get)/", "", $name);
+        } elseif (preg_match('/^(get)/', $name)) {
+            $name = preg_replace('/^(get)/', '', $name);
             $name = lcfirst($name);
             if (isset($this->$name)) {
                 return $this->$name;
             }
         }
 
-        return null;
+        return;
     }
 
     public function getEntityName()
     {
-        $className = explode("\\", get_class($this));
+        $className = explode('\\', get_class($this));
         $className = array_pop($className);
 
         return lcfirst($className);
     }
 
-    abstract function setURI($baseURI);
+    abstract public function setURI($baseURI);
 }
