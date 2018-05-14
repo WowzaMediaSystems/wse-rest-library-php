@@ -8,8 +8,7 @@ Wowza Streaming Engine™ 4.0.0 or later is required.
 
 [PHP 5.5.0](http://php.net/downloads.php) or later is required.
 
-[composer](https://getcomposer.org/) is highly recommended.
-PHP 5.5.0 or later is required
+[Composer](https://getcomposer.org/) is highly recommended.
 
 ## Composer Setup
 
