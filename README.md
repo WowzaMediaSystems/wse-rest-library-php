@@ -1,3 +1,5 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/WowzaMediaSystems/wse-rest-library-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/WowzaMediaSystems/wse-rest-library-php/?branch=master)
+
 # PHP REST Library for Wowza Streaming Engine
 Wowza Streaming Engine [media server software](https://www.wowza.com/products/streaming-engine) includes a REST API that you can wrap with a PHP library to configure, manage, and monitor your streaming media server through PHP requests.
 
