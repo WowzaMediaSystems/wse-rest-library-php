@@ -9,19 +9,19 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Application extends Wowza
 {
-    protected $appType = "Live";
-    protected $name = "";
-    protected $clientStreamReadAccess = "*";
-    protected $clientStreamWriteAccess = "*";
-    protected $description = "";
+    protected $appType = 'Live';
+    protected $name = '';
+    protected $clientStreamReadAccess = '*';
+    protected $clientStreamWriteAccess = '*';
+    protected $description = '';
 
     public function __construct(
         Settings $settings,
-        $name = "live",
-        $appType = "Live",
-        $clientStreamReadAccess = "*",
-        $clientStreamWriteAccess = "*",
-        $description = "*"
+        $name = 'live',
+        $appType = 'Live',
+        $clientStreamReadAccess = '*',
+        $clientStreamWriteAccess = '*',
+        $description = '*'
     ) {
         parent::__construct($settings);
         $this->name = $name;
@@ -29,7 +29,7 @@ class Application extends Wowza
         $this->clientStreamReadAccess = $clientStreamReadAccess;
         $this->clientStreamWriteAccess = $clientStreamWriteAccess;
         $this->description = $description;
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$name}";
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . "/applications/{$name}";
     }
 
     private function setParameters()
@@ -39,14 +39,13 @@ class Application extends Wowza
             ->addSkipParameter('appType', true)
             ->addSkipParameter('clientStreamWriteAccess', true)
             ->addSkipParameter('description', true);
-
     }
 
     public function get()
     {
         $this->setParameters();
 
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}";
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . "/applications/{$this->name}";
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
@@ -55,7 +54,7 @@ class Application extends Wowza
     {
         $this->setParameters();
 
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}/adv";
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . "/applications/{$this->name}/adv";
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
@@ -64,7 +63,7 @@ class Application extends Wowza
     {
         $this->setParameters();
 
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications";
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . '/applications';
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
@@ -77,7 +76,7 @@ class Application extends Wowza
         Entities\Application\TranscoderConfig $transConfig = null,
         Entities\Application\DrmConfig $drmConfig = null
     ) {
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}";
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . "/applications/{$this->name}";
 
         $entities = $this->getEntites(func_get_args(), $this->restURI);
 
@@ -92,7 +91,7 @@ class Application extends Wowza
         Entities\Application\TranscoderConfig $transConfig = null,
         Entities\Application\DrmConfig $drmConfig = null
     ) {
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}";
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . "/applications/{$this->name}";
 
         $entities = $this->getEntites(func_get_args(), $this->restURI);
 
@@ -100,19 +99,19 @@ class Application extends Wowza
     }
 
     public function updateAdvanced(
-		Entities\Application\AdvancedSettings $advancedSettings = null,
-		Entities\Application\Modules $modules = null
-	) {
-		$this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/{$this->name}";
+        Entities\Application\AdvancedSettings $advancedSettings = null,
+        Entities\Application\Modules $modules = null
+    ) {
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . "/applications/{$this->name}";
 
-		$entities = $this->getEntites(null, $this->restURI);
-		$props = new \stdClass();
-		$props->advancedSettings = $advancedSettings->advancedSettings;
-		$props->modules = $modules->moduleList;
-		$props->restURI = $this->restURI . "/adv";
+        $entities = $this->getEntites(null, $this->restURI);
+        $props = new \stdClass();
+        $props->advancedSettings = $advancedSettings->advancedSettings;
+        $props->modules = $modules->moduleList;
+        $props->restURI = $this->restURI . '/adv';
 
-		return $this->sendRequest($props, $entities, self::VERB_PUT);
-	}
+        return $this->sendRequest($props, $entities, self::VERB_PUT);
+    }
 
     public function remove()
     {

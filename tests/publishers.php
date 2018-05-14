@@ -6,7 +6,7 @@
 // Create settings
 $settings = new \com\wowza\entities\application\helpers\Settings();
 
-$sf = new com\wowza\Publisher($settings, "myUser");
+$sf = new com\wowza\Publisher($settings, 'myUser');
 // $response = $sf->create("myPass");
 // $response = $sf->remove();
 $response = $sf->getAll();

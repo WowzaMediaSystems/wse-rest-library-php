@@ -10,14 +10,14 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class StreamTarget extends Wowza
 {
-    protected $sourceStreamName = "myStream";
-    protected $entryName = "ppsource";
-    protected $profile = "rtmp";
-    protected $host = "localhost";
-    protected $application = "live";
+    protected $sourceStreamName = 'myStream';
+    protected $entryName = 'ppsource';
+    protected $profile = 'rtmp';
+    protected $host = 'localhost';
+    protected $application = 'live';
     protected $userName = null;
     protected $password = null;
-    protected $streamName = "myStream";
+    protected $streamName = 'myStream';
     protected $appName;
 
     public function __construct(Settings $settings, $appName)
@@ -35,9 +35,8 @@ class StreamTarget extends Wowza
         $password = null,
         $streamName = null,
         $application = null
-    )
-    {
-        $this->restURI = $this->getRestURI() . "/" . $entryName;
+    ) {
+        $this->restURI = $this->getRestURI() . '/' . $entryName;
         $this->sourceStreamName = (!is_null($sourceStreamName)) ? $sourceStreamName : $this->sourceStreamName;
         $this->entryName = (!is_null($entryName)) ? $entryName : $this->entryName;
         $this->profile = (!is_null($profile)) ? $profile : $this->profile;
@@ -56,6 +55,7 @@ class StreamTarget extends Wowza
     {
         $this->setNoParams();
         $this->restURI = $this->getRestURI();
+
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
@@ -75,13 +75,13 @@ class StreamTarget extends Wowza
     public function remove($entryName)
     {
         $this->setNoParams();
-        $this->restURI = $this->getRestURI() . "/" . $entryName;
+        $this->restURI = $this->getRestURI() . '/' . $entryName;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
     }
 
     protected function getRestURI()
     {
-        return $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/" . $this->getVHostInstance() . "/applications/" . $this->appName . "/pushpublish/mapentries";
+        return $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . '/applications/' . $this->appName . '/pushpublish/mapentries';
     }
 }

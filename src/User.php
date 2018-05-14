@@ -10,15 +10,15 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class User extends Wowza
 {
-    protected $userName = "";
-    protected $password = "";
+    protected $userName = '';
+    protected $password = '';
     protected $groups = [];
 
     public function __construct(Settings $settings, $userName = null)
     {
         parent::__construct($settings);
         $this->userName = $userName;
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/users";
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/users';
     }
 
     public function create($password, $group = [])
@@ -41,7 +41,7 @@ class User extends Wowza
 
     public function remove()
     {
-        $this->restURI = $this->restURI . "/" . $this->userName;
+        $this->restURI = $this->restURI . '/' . $this->userName;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
     }

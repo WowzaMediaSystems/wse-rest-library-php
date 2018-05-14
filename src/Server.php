@@ -19,8 +19,7 @@ class Server extends Wowza
 
     public function getUsers()
     {
-        $this->restURI .= "/users";
-        $entities = $this->getEntites([], $this->restURI);
+        $this->restURI .= '/users';
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
@@ -31,8 +30,6 @@ class Server extends Wowza
         $this->addAdditionalParameter('name', $name)
             ->addAdditionalParameter('password', $password)
             ->addAdditionalParameter('groups', $groups);
-
-        $entities = $this->getEntites([], $this->restURI);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), []);
     }

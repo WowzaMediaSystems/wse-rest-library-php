@@ -44,7 +44,9 @@ class Wowza
     protected function getEntites($args, $baseURI)
     {
         $entities = [];
-        for ($i = 0; $i < count($args); $i++) {
+        $argsCount = count($args);
+
+        for ($i = 0; $i < $argsCount; $i++) {
             $arg = $args[$i];
             if (!is_null($arg)) {
                 if (is_null($arg->restURI)) {
@@ -53,7 +55,7 @@ class Wowza
                     } else {
                         call_user_func_array([
                             $arg,
-                            "setURI",
+                            'setURI',
                         ], [
                             $baseURI,
                         ]);
@@ -103,7 +105,7 @@ class Wowza
 
             if ($this->settings->isUseDigest()) {
                 curl_setopt($ch, CURLOPT_USERPWD,
-                    $this->settings->getUsername() . ":" . $this->settings->getPassword());
+                    $this->settings->getUsername() . ':' . $this->settings->getPassword());
                 curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
             }
 
@@ -116,7 +118,7 @@ class Wowza
             $contents = curl_exec($ch);
             curl_close($ch);
 
-            $this->debug("RETURN: " . $contents);
+            $this->debug('RETURN: ' . $contents);
 
             return json_decode($contents);
         }
@@ -136,6 +138,7 @@ class Wowza
 
         return $this;
     }
+
     /**
      * @param $key
      * @param $value

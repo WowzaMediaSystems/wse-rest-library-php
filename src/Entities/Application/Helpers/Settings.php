@@ -41,11 +41,11 @@ class Settings
      */
     public function __construct(
         $debug = false,
-        $host = "http://localhost:8087/v2",
-        $serverInstance = "_defaultServer_",
-        $vhostInstance = "_defaultVHost_",
-        $username = "admin",
-        $password = "admin",
+        $host = 'http://localhost:8087/v2',
+        $serverInstance = '_defaultServer_',
+        $vhostInstance = '_defaultVHost_',
+        $username = 'admin',
+        $password = 'admin',
         $useDigest = false
     ) {
         $this->debug = $debug;

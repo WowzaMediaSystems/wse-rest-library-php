@@ -55,8 +55,8 @@
 // Create settings
 $settings = new \com\wowza\entities\application\helpers\Settings();
 
-$sf = new com\wowza\SmilFile($settings, "live");
-$response = $sf->remove("newsmil");
+$sf = new com\wowza\SmilFile($settings, 'live');
+$response = $sf->remove('newsmil');
 // $response = $sf->create("newsmil", $streams);
 
 // $response = $sf->getAll();
