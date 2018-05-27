@@ -5,46 +5,47 @@
 //
 namespace Com\Wowza\Entities\Application\Helpers;
 
-use Symfony\Component\Yaml\Yaml;
 use Symfony\Component\Yaml\Exception\ParseException;
+use Symfony\Component\Yaml\Yaml;
 
 class Settings
 {
     /** @var bool */
     private $debug;
-    
+
     /** @var string */
     private $host;
-    
+
     /** @var string */
     private $serverInstance;
-    
+
     /** @var string */
     private $vhostInstance;
-    
+
     /** @var string */
     private $username;
-    
+
     /** @var string */
     private $password;
-    
+
     /** @var bool */
     private $useDigest;
+
     /**
      * Settings constructor.
      *
      * @param string $configFilePath Absolute path of file
      * @param bool   $debug
-     * @throw \RuntimeException 
+     * @throw \RuntimeException
      */
-    public function __construct(string $configFilePath, bool $debug = false) 
+    public function __construct(string $configFilePath, bool $debug = false)
     {
         try {
             $config = Yaml::parse(file_get_contents($configFilePath));
         } catch (ParseException $exception) {
             throw $exception;
         }
-      
+
         $this->debug = $debug;
         $this->host = isset($config['Host']) ? $config['Host'] : 'http://localhost:8087/v2';
         $this->serverInstance = isset($config['ServerInstance']) ? $config['ServerInstance'] : '_defaultServer_';
@@ -53,7 +54,7 @@ class Settings
         $this->password = isset($config['Password']) ? $config['Password'] : 'admin';
         $this->useDigest = isset($config['useDigest']) ? $config['useDigest'] : false;
     }
-    
+
     /**
      * Get Debug.
      *
@@ -63,7 +64,7 @@ class Settings
     {
         return $this->debug;
     }
-    
+
     /**
      * Set Debug.
      *
@@ -74,9 +75,10 @@ class Settings
     public function setDebug($debug)
     {
         $this->debug = $debug;
+
         return $this;
     }
-    
+
     /**
      * Get Host.
      *
@@ -86,7 +88,7 @@ class Settings
     {
         return $this->host;
     }
-    
+
     /**
      * Set Host.
      *
@@ -97,9 +99,10 @@ class Settings
     public function setHost($host)
     {
         $this->host = $host;
+
         return $this;
     }
-    
+
     /**
      * Get ServerInstance.
      *
@@ -109,7 +112,7 @@ class Settings
     {
         return $this->serverInstance;
     }
-    
+
     /**
      * Set ServerInstance.
      *
@@ -120,9 +123,10 @@ class Settings
     public function setServerInstance($serverInstance)
     {
         $this->serverInstance = $serverInstance;
+
         return $this;
     }
-    
+
     /**
      * Get VhostInstance.
      *
@@ -132,7 +136,7 @@ class Settings
     {
         return $this->vhostInstance;
     }
-    
+
     /**
      * Set VhostInstance.
      *
@@ -143,9 +147,10 @@ class Settings
     public function setVhostInstance($vhostInstance)
     {
         $this->vhostInstance = $vhostInstance;
+
         return $this;
     }
-    
+
     /**
      * Get Username.
      *
@@ -155,7 +160,7 @@ class Settings
     {
         return $this->username;
     }
-    
+
     /**
      * Set Username.
      *
@@ -166,9 +171,10 @@ class Settings
     public function setUsername($username)
     {
         $this->username = $username;
+
         return $this;
     }
-    
+
     /**
      * Get Password.
      *
@@ -178,7 +184,7 @@ class Settings
     {
         return $this->password;
     }
-    
+
     /**
      * Set Password.
      *
@@ -189,9 +195,10 @@ class Settings
     public function setPassword($password)
     {
         $this->password = $password;
+
         return $this;
     }
-    
+
     /**
      * Get UseDigest.
      *
@@ -201,7 +208,7 @@ class Settings
     {
         return $this->useDigest;
     }
-    
+
     /**
      * Set UseDigest.
      *
@@ -212,6 +219,7 @@ class Settings
     public function setUseDigest($useDigest)
     {
         $this->useDigest = $useDigest;
+
         return $this;
     }
 }
