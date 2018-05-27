@@ -1,9 +1,8 @@
 <?php
 //
-// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code and all components (c) Copyright 2006 - 2018, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
-require_once("../include/config.php");
 
 // Create settings
 $settings = new \com\wowza\entities\application\helpers\Settings();
@@ -11,10 +10,10 @@ $settings = new \com\wowza\entities\application\helpers\Settings();
 $sf = new com\wowza\Statistics($settings);
 
 // get stats per application
-$wowzaApplication = new com\wowza\Application($settings, "vod");
+$wowzaApplication = new com\wowza\Application($settings, 'vod');
 
 // get total server stats
-$server = new com\wowza\Server($settings, "http://localhost:8087/v2");
+$server = new com\wowza\Server($settings, 'http://localhost:8087/v2');
 $response = $sf->getServerStatistics($server);
 
 // get stats historical for given application

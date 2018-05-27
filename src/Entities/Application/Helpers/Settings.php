@@ -1,5 +1,8 @@
 <?php
-
+//
+// This code and all components (c) Copyright 2006 - 2018, Wowza Media Systems, LLC. All rights reserved.
+// This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
+//
 namespace Com\Wowza\Entities\Application\Helpers;
 
 class Settings
@@ -38,11 +41,11 @@ class Settings
      */
     public function __construct(
         $debug = false,
-        $host = "http://localhost:8087/v2",
-        $serverInstance = "_defaultServer_",
-        $vhostInstance = "_defaultVHost_",
-        $username = "admin",
-        $password = "admin",
+        $host = 'http://localhost:8087/v2',
+        $serverInstance = '_defaultServer_',
+        $vhostInstance = '_defaultVHost_',
+        $username = 'admin',
+        $password = 'admin',
         $useDigest = false
     ) {
         $this->debug = $debug;
