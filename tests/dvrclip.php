@@ -1,15 +1,13 @@
 <?php
 //
-// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code and all components (c) Copyright 2006 - 2018, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
-use com\wowza\DvrClipExtraction;
-require_once("../include/config.php");
 
 // Create settings
 $settings = new \com\wowza\entities\application\helpers\Settings();
 
-$sf = new com\wowza\DvrClipExtraction($settings, "ndvr");
+$sf = new com\wowza\DvrClipExtraction($settings, 'ndvr');
 $response = $sf->clearCache();
 // $response = $sf->debugConversions("tmp127");
 // $sf->convertByDurationWithEndTimeTime("tmp123", time(), 5000);
