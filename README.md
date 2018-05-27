@@ -6,7 +6,7 @@ Wowza Streaming Engine [media server software](https://www.wowza.com/products/st
 ## Prerequisites
 Wowza Streaming Engine™ 4.0.0 or later is required.
 
-[PHP 5.5.0](http://php.net/downloads.php) or later is required.
+[PHP 5.5.9|PHP 7.0.8](http://php.net/downloads.php) or later is required.
 
 [Composer](https://getcomposer.org/) is highly recommended.
 
@@ -20,38 +20,26 @@ Wowza Media Systems, LLC is not responsible for nor does it provide support for 
 
 ## Example Configuration
 
+config.yaml
+
+```
+Host: "http://111.111.123.123:8087/v2"
+ServerInstance: "_defaultServer_"
+VHostInstance: "_defaultVHost_"
+UserName: "my_secret_username"
+Password: "my_super_cool_password"
+useDigest: false
+```
+
 index.php
-
 ```
 <?php
-//index.php
+require 'vendor/autoload.php';
 
-require_once(__DIR__.'/../vendor/autoload.php');
-
-// This is for a framework if you use one.
-//$framework = new Project\Framework();
-//$framework->registerDebugHandlers();
-//$framework->processHttpSapiRequest();
-
-require_once("../config.php"); // make sure this exists and is similar to the below - move it where it needs to be
-```
-
-config.php
-
-```
-<?php
-// config.php
-define("WOWZA_HOST","http://111.111.123.123:8087/v2");
-define("WOWZA_SERVER_INSTANCE", "_defaultServer_");
-define("WOWZA_VHOST_INSTANCE", "_defaultVHost_");
-define("WOWZA_USERNAME", "my_secret_username");
-define("WOWZA_PASSWORD", "my_super_cool_password");
+$configPath = __DIR__.'<path_to_config_file>';
 
 // It is simple to create a setup object for transporting our settings
-$setup = new Com\Wowza\Entities\Application\Helpers\Settings();
-$setup->setHost(WOWZA_HOST);
-$setup->setUsername(WOWZA_USERNAME);
-$setup->setPassword(WOWZA_PASSWORD);
+$setup = new Com\Wowza\Entities\Application\Helpers\Settings($configPath);
 
 // Connect to the server or deal with statistics NOTICE THE CAPS IN COM AND WOWZA
 $server = new Com\Wowza\Server($setup);
