@@ -1,0 +1,56 @@
+# language: php
+build:
+    environment:
+        php: '5.5'
+        php: '5.6'
+        php: '7.0'
+        php: '7.1'
+        php: '7.2'
+        php: hhvm
+    nodes:
+        tests: true
+        analysis:
+            tests:
+                override:
+                    -
+                        command: phpcs-run
+                        use_website_config: true
+                    - php-scrutinizer-run
+filter:
+    excluded_paths: [tests/*]
+checks:
+    php:
+        code_rating: true
+        remove_extra_empty_lines: true
+        remove_php_closing_tag: true
+        remove_trailing_whitespace: true
+        fix_use_statements:
+            remove_unused: true
+            preserve_multiple: false
+            preserve_blanklines: true
+            order_alphabetically: true
+        fix_php_opening_tag: true
+        fix_linefeed: true
+        fix_line_ending: true
+        fix_identation_4spaces: true
+        fix_doc_comments: true
+        simplify_boolean_return: true
+        properties_in_camelcaps: true
+        parameters_in_camelcaps: true
+        parameter_doc_comments: true
+        no_short_variable_names:
+            minimum: '3'
+        no_short_method_names:
+            minimum: '3'
+        no_goto: true
+        check_method_contracts:
+            verify_interface_like_constraints: true
+            verify_documented_constraints: true
+            verify_parent_constraints: true
+tools:
+    external_code_coverage: false
+    php_analyzer: true
+    php_code_coverage: true
+    php_code_sniffer: true
+    php_loc: true
+    php_cpd: true
