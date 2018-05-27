@@ -1,14 +1,13 @@
 <?php
 //
-// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code and all components (c) Copyright 2006 - 2018, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
-require_once("../include/config.php");
 
 // Create settings
 $settings = new \com\wowza\entities\application\helpers\Settings();
 
-$sf = new com\wowza\StreamFile($settings, "live", "myStream");
+$sf = new com\wowza\StreamFile($settings, 'live', 'myStream');
 $response = $sf->get();
 
 // $response = $sf->create(array("uri"=>"rtsp://localhost/vod/mp4:BigBuckBunny_115k.mov","streamTimeout"=>1200,"rtspSessionTimeout"=>800), "rtp");

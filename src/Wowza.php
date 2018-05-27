@@ -1,6 +1,6 @@
 <?php
 //
-// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code and all components (c) Copyright 2006 - 2018, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 
@@ -10,14 +10,14 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Wowza
 {
-    const VERB_POST = "POST";
-    const VERB_GET = "GET";
-    const VERB_DELETE = "DELETE";
-    const VERB_PUT = "PUT";
+    const VERB_POST = 'POST';
+    const VERB_GET = 'GET';
+    const VERB_DELETE = 'DELETE';
+    const VERB_PUT = 'PUT';
 
-    protected $restURI = "";
-    protected $_skip = [];
-    protected $_additional = [];
+    protected $restURI = '';
+    private $_skip = [];
+    private $_additional = [];
 
     private $settings;
 
@@ -44,7 +44,9 @@ class Wowza
     protected function getEntites($args, $baseURI)
     {
         $entities = [];
-        for ($i = 0; $i < count($args); $i++) {
+        $argsCount = count($args);
+
+        for ($i = 0; $i < $argsCount; $i++) {
             $arg = $args[$i];
             if (!is_null($arg)) {
                 if (is_null($arg->restURI)) {
@@ -53,7 +55,7 @@ class Wowza
                     } else {
                         call_user_func_array([
                             $arg,
-                            "setURI",
+                            'setURI',
                         ], [
                             $baseURI,
                         ]);
@@ -79,10 +81,11 @@ class Wowza
     protected function sendRequest($props, $entities, $verbType = self::VERB_POST, $queryParams = null)
     {
         if (isset($props->restURI) && !empty($props->restURI)) {
-            if (count($entities) > 0) {
-                for ($i = 0; $i < count($entities); $i++) {
+            $entityCount = count($entities);
+            if ($entityCount > 0) {
+                for ($i = 0; $i < $entityCount; $i++) {
                     $entity = $entities[$i];
-                    if (is_object($entity) && method_exists($entity, "getEntityName")) {
+                    if (is_object($entity) && method_exists($entity, 'getEntityName')) {
                         $name = $entity->getEntityName();
                         $props->$name = $entity;
                     }
@@ -91,8 +94,8 @@ class Wowza
             $json = json_encode($props);
 
             $restURL = $props->restURI;
-            if (!is_null($queryParams)) {
-                $restURL .= "?" . $queryParams;
+            if (null !== $queryParams) {
+                $restURL .= '?' . $queryParams;
             }
             $this->debug("JSON REQUEST to {$restURL} with verb {$verbType}: " . $json);
 
@@ -102,7 +105,7 @@ class Wowza
 
             if ($this->settings->isUseDigest()) {
                 curl_setopt($ch, CURLOPT_USERPWD,
-                    $this->settings->getUsername() . ":" . $this->settings->getPassword());
+                    $this->settings->getUsername() . ':' . $this->settings->getPassword());
                 curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
             }
 
@@ -115,12 +118,38 @@ class Wowza
             $contents = curl_exec($ch);
             curl_close($ch);
 
-            $this->debug("RETURN: " . $contents);
+            $this->debug('RETURN: ' . $contents);
 
             return json_decode($contents);
         }
 
         return false;
+    }
+
+    /**
+     * @param $key
+     * @param $value
+     *
+     * @return $this
+     */
+    public function addAdditionalParameter($key, $value)
+    {
+        $this->_additional[$key] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param $key
+     * @param $value
+     *
+     * @return $this
+     */
+    public function addSkipParameter($key, $value)
+    {
+        $this->_skip[$key] = $value;
+
+        return $this;
     }
 
     protected function preparePropertiesForRequest($class)
@@ -133,7 +162,7 @@ class Wowza
                 if (preg_match("/^(\_)/", $key)) {
                     continue;
                 }
-                if (isset($this->_skip[$key])) {
+                if (array_key_exists($key, $this->_skip)) {
                     continue;
                 }
                 $props->$key = $this->$key;

@@ -1,6 +1,6 @@
 <?php
 //
-// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code and all components (c) Copyright 2006 - 2018, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 namespace Com\Wowza;
@@ -9,14 +9,14 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Publisher extends Wowza
 {
-    protected $name = "";
-    protected $password = "";
+    protected $name = '';
+    protected $password = '';
 
     public function __construct(Settings $settings, $publisherName = null)
     {
         parent::__construct($settings);
         $this->name = $publisherName;
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/publishers";
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/publishers';
     }
 
     public function create($password)
@@ -29,15 +29,15 @@ class Publisher extends Wowza
 
     public function getAll()
     {
-        $this->_skip["name"] = true;
-        $this->_skip["password"] = true;
+        $this->addSkipParameter('name', true)
+            ->addSkipParameter('password', true);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
     public function remove()
     {
-        $this->restURI = $this->restURI . "/" . $this->name;
+        $this->restURI = $this->restURI . '/' . $this->name;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_DELETE);
     }
