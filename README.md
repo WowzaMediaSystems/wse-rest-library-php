@@ -65,7 +65,7 @@ var_dump($response);
 A development branch is available through Packagist at [the packagist website.](https://packagist.org/packages/wowza/wse-rest-library-php#dev-master)
 
 ## Usage
-To learn the basics of how to query the Wowza Streaming Engine REST service using PHP, see [How to use PHP to make requests to the Wowza Streaming Engine REST API](https://www.wowza.com/forums/content.php?918-How-to-use-PHP-to-make-requests-to-the-Wowza-Streaming-Engine-REST-API). For examples on how to leverage this PHP library, see [REST API Query Examples (PHP)](https://www.wowza.com/forums/content.php?889-wowza-streaming-engine-rest-api-query-examples-%28php%29).
+To learn the basics of how to query the Wowza Streaming Engine REST API, see [Query the Wowza Streaming Engine REST API](https://www.wowza.com/docs/how-to-query-wowza-rest-api). For reference documentation, see [Access reference documentation for the Wowza Streaming Cloud REST API](https://www.wowza.com/docs/how-to-access-documentation-for-wowza-streaming-engine-rest-api).
 
 ## More resources
 Wowza Media Systems™ provides developers with a platform to create streaming applications and solutions. See [Wowza Developer Tools](https://www.wowza.com/resources/developers) to learn more about our APIs and SDK.
