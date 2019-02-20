@@ -44,9 +44,9 @@ class Settings
         $host = 'http://localhost:8087/v2',
         $serverInstance = '_defaultServer_',
         $vhostInstance = '_defaultVHost_',
-        $username = 'admin',
-        $password = 'admin',
-        $useDigest = false
+        $username = '',
+        $password = '',
+        $useDigest = true
     ) {
         $this->debug = $debug;
         $this->host = $host;
