@@ -5,7 +5,7 @@
 //
 namespace Com\Wowza\Entities\Application;
 
-use Com\Wowza\entities\Entity;
+use Com\Wowza\Entities\Entity;
 
 class AdvancedSettings extends Entity
 {
