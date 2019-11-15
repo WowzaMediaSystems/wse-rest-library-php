@@ -51,6 +51,29 @@ class StreamTarget extends Wowza
         return $response;
     }
 
+    public function update(
+        $sourceStreamName = null,
+        $entryName = null,
+        $profile = null,
+        $host = null,
+        $userName = null,
+        $password = null,
+        $streamName = null,
+        $application = null
+    ) {
+        $this->restURI = $this->restURI . "/" . $entryName;
+        $this->sourceStreamName = (!is_null($sourceStreamName)) ? $sourceStreamName : $this->sourceStreamName;
+        $this->entryName = (!is_null($entryName)) ? $entryName : $this->entryName;
+        $this->profile = (!is_null($profile)) ? $profile : $this->profile;
+        $this->host = (!is_null($host)) ? $host : $this->host;
+        $this->userName = (!is_null($userName)) ? $userName : $this->userName;
+        $this->password = (!is_null($password)) ? $password : $this->password;
+        $this->streamName = (!is_null($streamName)) ? $streamName : $this->streamName;
+        $this->application = (!is_null($application)) ? $application : $this->application;
+
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
+    }
+
     public function getAll()
     {
         $this->setNoParams();
