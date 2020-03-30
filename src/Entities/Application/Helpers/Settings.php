@@ -1,6 +1,12 @@
 <?php
-
+//
+// This code and all components (c) Copyright 2006 - 2018, Wowza Media Systems, LLC. All rights reserved.
+// This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
+//
 namespace Com\Wowza\Entities\Application\Helpers;
+
+use Symfony\Component\Yaml\Exception\ParseException;
+use Symfony\Component\Yaml\Yaml;
 
 class Settings
 {
@@ -28,30 +34,25 @@ class Settings
     /**
      * Settings constructor.
      *
+     * @param string $configFilePath Absolute path of file
      * @param bool   $debug
-     * @param string $host
-     * @param string $serverInstance
-     * @param string $vhostInstance
-     * @param string $username
-     * @param string $password
-     * @param bool   $useDigest
+     * @throw \RuntimeException
      */
-    public function __construct(
-        $debug = false,
-        $host = "http://localhost:8087/v2",
-        $serverInstance = "_defaultServer_",
-        $vhostInstance = "_defaultVHost_",
-        $username = "admin",
-        $password = "admin",
-        $useDigest = false
-    ) {
+    public function __construct(string $configFilePath, bool $debug = false)
+    {
+        try {
+            $config = Yaml::parse(file_get_contents($configFilePath));
+        } catch (ParseException $exception) {
+            throw $exception;
+        }
+
         $this->debug = $debug;
-        $this->host = $host;
-        $this->serverInstance = $serverInstance;
-        $this->vhostInstance = $vhostInstance;
-        $this->username = $username;
-        $this->password = $password;
-        $this->useDigest = $useDigest;
+        $this->host = isset($config['Host']) ? $config['Host'] : 'http://localhost:8087/v2';
+        $this->serverInstance = isset($config['ServerInstance']) ? $config['ServerInstance'] : '_defaultServer_';
+        $this->vhostInstance = isset($config['VHostInstance']) ? $config['VHostInstance'] : '_defaultServer_';
+        $this->username = isset($config['UserName']) ? $config['UserName'] : 'admin';
+        $this->password = isset($config['Password']) ? $config['Password'] : 'admin';
+        $this->useDigest = isset($config['useDigest']) ? $config['useDigest'] : false;
     }
 
     /**

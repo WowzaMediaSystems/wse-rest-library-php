@@ -1,6 +1,6 @@
 <?php
 //
-// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code and all components (c) Copyright 2006 - 2018, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 namespace Com\Wowza;
@@ -9,36 +9,36 @@ use Com\Wowza\Entities\Application\Helpers\Settings;
 
 class Recording extends Wowza
 {
-    protected $recordName = "myStream";
-    protected $instanceName = "_definst_";
-    protected $recorderState = "Waiting for stream";
-    protected $defaultRecorder = "true";
-    protected $segmentationType = "None";
-    protected $outputPath = "";
-    protected $baseFile = "myrecord.mp4";
-    protected $fileFormat = "MP4";
-    protected $fileVersionDelegateName = "com.wowza.wms.livestreamrecord.manager.StreamRecorderFileVersionDelegate";
-    protected $fileTemplate = "\${BaseFileName}_\${RecordingStartTime}_\${SegmentNumber}";
-    protected $segmentDuration = "900000";
-    protected $segmentSize = "10485760";
-    protected $segmentSchedule = "0 * * * * *";
-    protected $recordData = "true";
-    protected $startOnKeyFrame = "true";
-    protected $splitOnTcDiscontinuity = "false";
-    protected $option = "Version existing file";
-    protected $moveFirstVideoFrameToZero = "true";
-    protected $currentSize = "0";
-    protected $currentDuration = "0";
-    protected $recordingStartTime = "";
+    protected $recorderName = 'myStream';
+    protected $instanceName = '_definst_';
+    protected $recorderState = 'Waiting for stream';
+    protected $defaultRecorder = 'true';
+    protected $segmentationType = 'None';
+    protected $outputPath = '';
+    protected $baseFile = 'myrecord.mp4';
+    protected $fileFormat = 'MP4';
+    protected $fileVersionDelegateName = 'com.wowza.wms.livestreamrecord.manager.StreamRecorderFileVersionDelegate';
+    protected $fileTemplate = '${BaseFileName}_${RecordingStartTime}_${SegmentNumber}';
+    protected $segmentDuration = '900000';
+    protected $segmentSize = '10485760';
+    protected $segmentSchedule = '0 * * * * *';
+    protected $recordData = 'true';
+    protected $startOnKeyFrame = 'true';
+    protected $splitOnTcDiscontinuity = 'false';
+    protected $option = 'Version existing file';
+    protected $moveFirstVideoFrameToZero = 'true';
+    protected $currentSize = '0';
+    protected $currentDuration = '0';
+    protected $recordingStartTime = '';
 
-    public function __construct(Settings $settings)
+    public function __construct(Settings $settings, $appName = 'live', $appInstance = '_definst_')
     {
         parent::__construct($settings);
-        $this->restURI = $this->getHost() . "/servers/" . $this->getServerInstance() . "/vhosts/_defaultVHost_/applications/live/instances/_definst_/streamrecorders";
+        $this->restURI = $this->getHost() . '/servers/' . $this->getServerInstance() . '/vhosts/' . $this->getVHostInstance() . "/applications/{$appName}/instances/{$appInstance}/streamrecorders";
     }
 
     public function create(
-        $recordName,
+        $recorderName,
         $instanceName,
         $recorderState,
         $defaultRecorder,
@@ -60,12 +60,11 @@ class Recording extends Wowza
         $currentDuration,
         $recordingStartTime
     ) {
-
-        $this->recordName = $recordName;
+        $this->recorderName = $recorderName;
         $this->instanceName = $instanceName;
-        $this->recordName = $recorderState;
-        $this->recordName = $defaultRecorder;
-        $this->recordName = $segmentationType;
+        $this->recorderState = $recorderState;
+        $this->defaultRecorder = $defaultRecorder;
+        $this->segmentationType = $segmentationType;
         $this->outputPath = $outputPath;
         $this->baseFile = $baseFile;
         $this->fileFormat = $fileFormat;
@@ -95,17 +94,33 @@ class Recording extends Wowza
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
 
-    public function stop($recordName)
+    public function getRecorder($recorderName)
     {
-        $this->restURI = $this->restURI . "/" . $recordName . "/actions/stopRecording";
+        $this->restURI = $this->restURI . '/' . $recorderName;
+        $this->setNoParams();
+
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
+    }
+
+    public function getDefaultParams($recorderName)
+    {
+        $this->restURI = $this->restURI . '/' . $recorderName . '/default';
+        $this->setNoParams();
+
+        return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
+    }
+
+    public function stop($recorderName)
+    {
+        $this->restURI = $this->restURI . '/' . $recorderName . '/actions/stopRecording';
         $this->setNoParams();
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
 
-    public function split($recordName)
+    public function split($recorderName)
     {
-        $this->restURI = $this->restURI . "/" . $recordName . "/actions/splitRecording";
+        $this->restURI = $this->restURI . '/' . $recorderName . '/actions/splitRecording';
         $this->setNoParams();
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
@@ -113,26 +128,25 @@ class Recording extends Wowza
 
     private function setNoParams()
     {
-        $this->_skip["recordName"] = true;
-        $this->_skip["instanceName"] = true;
-        $this->_skip["recorderState"] = true;
-        $this->_skip["defaultRecorder"] = true;
-        $this->_skip["segmentationType"] = true;
-        $this->_skip["outputPath"] = true;
-        $this->_skip["baseFile"] = true;
-        $this->_skip["fileFormat"] = true;
-        $this->_skip["fileVersionDelegateName"] = true;
-        $this->_skip["fileTemplate"] = true;
-        $this->_skip["segmentDuration"] = true;
-        $this->_skip["segmentSize"] = true;
-        $this->_skip["segmentSchedule"] = true;
-        $this->_skip["recordData"] = true;
-        $this->_skip["startOnKeyFrame"] = true;
-        $this->_skip["splitOnTcDiscontinuity"] = true;
-        $this->_skip["option"] = true;
-        $this->_skip["moveFirstVideoFrameToZero"] = true;
-        $this->_skip["currentSize"] = true;
-        $this->_skip["currentDuration"] = true;
-        $this->_skip["recordingStartTime"] = true;
+        $this->addSkipParameter('recordName', true)
+            ->addSkipParameter('instanceName', true)
+            ->addSkipParameter('recorderState', true)
+            ->addSkipParameter('defaultRecorder', true)
+            ->addSkipParameter('segmentationType', true)
+            ->addSkipParameter('outputPath', true)
+            ->addSkipParameter('baseFile', true)
+            ->addSkipParameter('fileFormat', true)
+            ->addSkipParameter('fileVersionDelegateName', true)
+            ->addSkipParameter('fileTemplate', true)
+            ->addSkipParameter('segmentDuration', true)
+            ->addSkipParameter('segmentSize', true)
+            ->addSkipParameter('segmentSchedule', true)
+            ->addSkipParameter('startOnKeyFrame', true)
+            ->addSkipParameter('splitOnTcDiscontinuity', true)
+            ->addSkipParameter('option', true)
+            ->addSkipParameter('moveFirstVideoFrameToZero', true)
+            ->addSkipParameter('currentSize', true)
+            ->addSkipParameter('currentDuration', true)
+            ->addSkipParameter('recordingStartTime', true);
     }
 }

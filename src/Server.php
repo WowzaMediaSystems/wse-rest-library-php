@@ -1,6 +1,6 @@
 <?php
 //
-// This code and all components (c) Copyright 2006 - 2016, Wowza Media Systems, LLC. All rights reserved.
+// This code and all components (c) Copyright 2006 - 2018, Wowza Media Systems, LLC. All rights reserved.
 // This code is licensed pursuant to the Wowza Public License version 1.0, available at www.wowza.com/legal.
 //
 
@@ -19,8 +19,7 @@ class Server extends Wowza
 
     public function getUsers()
     {
-        $this->restURI .= "/users";
-        $entities = $this->getEntites([], $this->restURI);
+        $this->restURI .= '/users';
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_GET);
     }
@@ -28,10 +27,9 @@ class Server extends Wowza
     public function createUser($name, $password, $groups = [])
     {
         $this->restURI .= "/users/{$name}";
-        $this->_additional["name"] = $name;
-        $this->_additional["password"] = $password;
-        $this->_additional["groups"] = $groups;
-        $entities = $this->getEntites([], $this->restURI);
+        $this->addAdditionalParameter('name', $name)
+            ->addAdditionalParameter('password', $password)
+            ->addAdditionalParameter('groups', $groups);
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), []);
     }
