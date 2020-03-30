@@ -75,5 +75,3 @@ Wowza Media Systems™ provides developers with a platform to create streaming a
 
 ## License
 This code is distributed under the [Wowza Public License](https://github.com/WowzaMediaSystems/rest-library-php/blob/master/LICENSE.txt).
-
-![alt tag](http://wowzalogs.com/stats/githubimage.php?plugin=rest-library-php)
