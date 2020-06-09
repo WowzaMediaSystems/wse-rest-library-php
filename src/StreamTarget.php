@@ -61,7 +61,7 @@ class StreamTarget extends Wowza
         $streamName = null,
         $application = null
     ) {
-        $this->restURI = $this->restURI . "/" . $entryName;
+        $this->restURI = $this->getRestURI() . "/" . $entryName;
         $this->sourceStreamName = (!is_null($sourceStreamName)) ? $sourceStreamName : $this->sourceStreamName;
         $this->entryName = (!is_null($entryName)) ? $entryName : $this->entryName;
         $this->profile = (!is_null($profile)) ? $profile : $this->profile;
