@@ -19,6 +19,7 @@ class StreamTarget extends Wowza
     protected $password = null;
     protected $streamName = 'myStream';
     protected $appName;
+    protected $port = 1935
 
     public function __construct(Settings $settings, $appName)
     {
@@ -34,7 +35,8 @@ class StreamTarget extends Wowza
         $userName = null,
         $password = null,
         $streamName = null,
-        $application = null
+        $application = null,
+        $port = null
     ) {
         $this->restURI = $this->getRestURI() . '/' . $entryName;
         $this->sourceStreamName = (!is_null($sourceStreamName)) ? $sourceStreamName : $this->sourceStreamName;
@@ -45,6 +47,7 @@ class StreamTarget extends Wowza
         $this->password = (!is_null($password)) ? $password : $this->password;
         $this->streamName = (!is_null($streamName)) ? $streamName : $this->streamName;
         $this->application = (!is_null($application)) ? $application : $this->application;
+        $this->port = (!is_null($port)) ? ($int)$port : $this->port;
 
         $response = $this->sendRequest($this->preparePropertiesForRequest(self::class), []);
 
@@ -59,7 +62,8 @@ class StreamTarget extends Wowza
         $userName = null,
         $password = null,
         $streamName = null,
-        $application = null
+        $application = null,
+        $port = null
     ) {
         $this->restURI = $this->getRestURI() . "/" . $entryName;
         $this->sourceStreamName = (!is_null($sourceStreamName)) ? $sourceStreamName : $this->sourceStreamName;
@@ -70,6 +74,7 @@ class StreamTarget extends Wowza
         $this->password = (!is_null($password)) ? $password : $this->password;
         $this->streamName = (!is_null($streamName)) ? $streamName : $this->streamName;
         $this->application = (!is_null($application)) ? $application : $this->application;
+        $this->port = (!is_null($port)) ? ($int)$port : $this->port;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
