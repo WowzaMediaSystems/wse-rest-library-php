@@ -68,10 +68,10 @@ A development branch is available through Packagist at [the packagist website.](
 To learn the basics of how to query the Wowza Streaming Engine REST API, see [Query the Wowza Streaming Engine REST API](https://www.wowza.com/docs/how-to-query-wowza-rest-api). For reference documentation, see [Access reference documentation for the Wowza Streaming Cloud REST API](https://www.wowza.com/docs/how-to-access-documentation-for-wowza-streaming-engine-rest-api).
 
 ## More resources
-Wowza Media Systems™ provides developers with a platform to create streaming applications and solutions. See [Wowza Developer Tools](https://www.wowza.com/resources/developers) to learn more about our APIs and SDK.
+Wowza Media Systems™ provides developers with a platform to create streaming applications and solutions. See [Wowza Developer Tools](https://www.wowza.com/developer) to learn more about our APIs and SDK.
 
 ## Contact
 [Wowza Media Systems, LLC](https://www.wowza.com/contact)
 
 ## License
-This code is distributed under the [Wowza Public License](https://github.com/WowzaMediaSystems/rest-library-php/blob/master/LICENSE.txt).
+This code is distributed under the [Wowza Public License](/LICENSE.txt).
