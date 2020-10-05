@@ -19,7 +19,7 @@ class StreamTarget extends Wowza
     protected $password = null;
     protected $streamName = 'myStream';
     protected $appName;
-    protected $port = 1935
+    protected $port = 1935;
 
     public function __construct(Settings $settings, $appName)
     {
