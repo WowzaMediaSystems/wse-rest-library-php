@@ -47,7 +47,7 @@ class StreamTarget extends Wowza
         $this->password = (!is_null($password)) ? $password : $this->password;
         $this->streamName = (!is_null($streamName)) ? $streamName : $this->streamName;
         $this->application = (!is_null($application)) ? $application : $this->application;
-        $this->port = (!is_null($port)) ? ($int)$port : $this->port;
+        $this->port = (!is_null($port)) ? (int)$port : $this->port;
 
         $response = $this->sendRequest($this->preparePropertiesForRequest(self::class), []);
 
@@ -74,7 +74,7 @@ class StreamTarget extends Wowza
         $this->password = (!is_null($password)) ? $password : $this->password;
         $this->streamName = (!is_null($streamName)) ? $streamName : $this->streamName;
         $this->application = (!is_null($application)) ? $application : $this->application;
-        $this->port = (!is_null($port)) ? ($int)$port : $this->port;
+        $this->port = (!is_null($port)) ? (int)$port : $this->port;
 
         return $this->sendRequest($this->preparePropertiesForRequest(self::class), [], self::VERB_PUT);
     }
