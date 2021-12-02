@@ -14,7 +14,7 @@ Wowza Streaming Engine™ 4.0.0 or later is required.
 
 1. Please [install composer](https://getcomposer.org/doc/00-intro.md)
 
-2. `$ composer require "wowza/wse-rest-library-php:dev-master"`
+2. `$ composer require "wowza/wse-rest-library-php:dev-main"`
 
 Wowza Media Systems, LLC is not responsible for nor does it provide support for composer.
 
